@@ -211,27 +211,26 @@ footer{background:var(--ink);padding:32px clamp(16px,6vw,80px);display:flex;just
 <!-- ═══════════ TOP PAGE ═══════════ -->
 <div id="page-top" class="page active">
 
-  <!-- HERO -->
-  <div id="hero">
-    <div id="hero-img">
-      <img id="hero-photo" src="https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=1920&q=90&auto=format&fit=crop" alt="hero">
-    </div>
-    <div id="hero-overlay"></div>
-    <div id="hero-content">
-      <div class="hero-tag" id="hero-tag">特集</div>
-      <h1 id="hero-title">旅は、<br>自分を変える。</h1>
-      <p id="hero-sub">SORATABIが厳選した絶景と出会いの旅へ。<br>20〜30代の旅好きが本当に行きたい場所だけを届けます。</p>
-      <div class="hero-btns">
-        <button class="btn-primary" onclick="showArticle(0)">記事を読む</button>
-        <button class="btn-ghost" onclick="showPage('list')">すべて見る →</button>
-      </div>
-    </div>
-    <div class="hero-dots" id="hero-dots"></div>
-    <div class="scroll-hint">
-      <div class="scroll-line"></div>
-      <div class="scroll-text">scroll</div>
-    </div>
-  </div>
+const HEROES = [
+  {
+    src: "https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=1920&q=90&auto=format&fit=crop", 
+    tag: "特集", 
+    title: "旅は、自分を変える。", 
+    sub: "SORATABIが厳選した絶景と出会いの旅へ。20〜30代の旅好きが本当に行きたい場所だけを届けます。"
+  },
+  {
+    src: "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1920&q=90&auto=format&fit=crop", 
+    tag: "新着", 
+    title: "その先に、未知の美しさがある。", 
+    sub: "本物の旅ガイドを、SORATABIが厳選してお届けします。"
+  },
+  {
+    src: "https://images.unsplash.com/photo-1500835556837-99ac94a94552?w=1920&q=90&auto=format&fit=crop", 
+    tag: "特集", 
+    title: "今すぐ行きたい旅先7選", 
+    sub: "2026年、絶対に訪れるべき場所を厳選しました。"
+  }
+];
 
   <!-- FEATURED -->
   <div class="section" style="background:var(--sand)">
