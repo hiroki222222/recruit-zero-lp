@@ -102,13 +102,11 @@
         </div>
     </div>
 
-    <footer>
+  <footer>
         <div class="logo-text">SORA<span>TABI</span></div>
         <p style="opacity:0.3; font-size:12px">© 2026 SORATABI</p>
     </footer>
-</div>
-
-<div id="page-list" class="page">
+</div> <div id="page-list" class="page">
     <div style="height:40vh; position:relative; overflow:hidden">
         <img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1600" alt="">
         <div style="position:absolute; inset:0; background:rgba(0,0,0,0.4); display:flex; align-items:center; justify-content:center">
@@ -121,6 +119,7 @@
 </div>
 
 <script>
+/* --- DATA --- */
 const ARTICLES = [
     { id:0, cat:"リゾート", photo:"https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=800", title:"モルディブ、水上ヴィラで過ごす夢", dest:"🇲🇻 モルディブ", date:"2026.02.18", lead:"エメラルドグリーンの海に浮かぶ水上コテージ。" },
     { id:1, cat:"文化", photo:"https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=800", title:"バリ島、神々の島で見つけた自分", dest:"🇮🇩 バリ島", date:"2026.02.12", lead:"芸術と信仰が溶け合う神々の島。" },
@@ -129,7 +128,8 @@ const ARTICLES = [
 
 const HEROES = [
     { src:"https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=1600", tag:"特集", title:"旅は、自分を変える。", sub:"SORATABIが厳選した絶景と出会いの旅へ。" },
-    { src:"https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1600", tag:"新着", title:"その先に、未知の美しさがある。", sub:"本物の旅ガイドを、厳選してお届けします。" }
+    { src:"https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1600", tag:"新着", title:"その先に、未知の美しさがある。", sub:"本物の旅ガイドを、厳選してお届けします。" },
+    { src:"https://images.unsplash.com/photo-1500835556837-99ac94a94552?w=1600", tag:"特集", title:"今すぐ行きたい旅先7選", sub:"2026年、絶対に訪れるべき場所を厳選しました。" }
 ];
 
 const MOSAICS = [
@@ -139,6 +139,7 @@ const MOSAICS = [
     { src:"https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=600", label:"Kyoto" }
 ];
 
+/* --- LOGIC --- */
 let heroIdx = 0;
 
 function cardHTML(a, tall = false) {
@@ -190,6 +191,7 @@ window.addEventListener('scroll', () => {
     else nav.classList.remove('solid');
 });
 
+// 初期起動
 buildHome();
 setInterval(() => {
     heroIdx = (heroIdx + 1) % HEROES.length;
