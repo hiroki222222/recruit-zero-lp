@@ -3,22 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SORATABI – Travel Magazine</title>
+    <title>SORATABI – Travel & Sleep Magazine</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
-        /* --- 基本設定 --- */
+        /* --- 1. 基本設定（Visit Norway風のクリーンな余白） --- */
+        :root {
+            --ink: #111810;
+            --white: #fff;
+            --coral: #d95f3b;
+            --navy: #000044;
+            --sand: #f7f2ec;
+            --gray: #6b6560;
+            --light-bg: #FAF9F6;
+        }
         *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
         html{scroll-behavior:smooth}
-        body{font-family:'DM Sans',sans-serif;background:#f7f2ec;color:#111;overflow-x:hidden}
+        body{font-family:'DM Sans',sans-serif;background:var(--light-bg);color:var(--ink);overflow-x:hidden;line-height:1.7}
         img{display:block;width:100%;height:100%;object-fit:cover}
-        button,a{cursor:pointer;font-family:'DM Sans',sans-serif;text-decoration:none}
-        :root{--ink:#111810;--white:#fff;--coral:#d95f3b;--navy:#000044;--sand:#f7f2ec;--gray:#6b6560}
+        button,a{cursor:pointer;font-family:'DM Sans',sans-serif;text-decoration:none;transition:0.3s}
 
-        /* --- ヘッダー (Visit Norway風) --- */
-        #nav{position:fixed;top:0;left:0;right:0;z-index:300;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(16px,6vw,80px);transition:0.35s}
-        #nav.solid{background:rgba(255, 255, 255, 0.98);box-shadow:0 2px 10px rgba(0,0,0,0.1)}
-        .logo-text{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:700;letter-spacing:2px;color:var(--white)}
+        /* --- 2. ヘッダー（スクロールで色変化） --- */
+        #nav{position:fixed;top:0;left:0;right:0;z-index:300;height:72px;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(16px,6vw,80px);transition:0.35s}
+        #nav.solid{background:rgba(255, 255, 255, 0.98);box-shadow:0 2px 10px rgba(0,0,0,0.05)}
+        .logo-text{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:700;letter-spacing:2px;color:var(--white)}
         #nav.solid .logo-text{color:var(--ink)}
         .logo-text span{color:var(--coral)}
         .nav-links{display:flex;gap:20px;align-items:center}
@@ -26,39 +34,54 @@
         #nav.solid .nav-link{color:var(--gray)}
         .nav-cta{padding:10px 24px;background:var(--coral);border:none;border-radius:4px;color:var(--white);font-size:12px;font-weight:700}
 
-        /* --- ページ構成 --- */
-        .page{display:none}
+        /* --- 3. ページ切り替え --- */
+        .page{display:none;animation:fadeIn 0.8s ease-out}
         .page.active{display:block}
+        @keyframes fadeIn { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
 
-        /* --- ヒーロー (没入感重視) --- */
+        /* --- 4. TOP: ヒーロー（Visit Norway完全リスペクト） --- */
         #hero{position:relative;height:100vh;overflow:hidden;background:#000}
-        #hero-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity 1s ease-in-out;transform:scale(1.05);animation:kenburns 20s infinite alternate}
+        #hero-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity 1s ease-in-out;animation:kenburns 20s infinite alternate}
         @keyframes kenburns { from{transform:scale(1)} to{transform:scale(1.1)} }
-        #hero-overlay{position:absolute;inset:0;background:rgba(0,0,0,0.3)}
-        #hero-content{position:absolute;bottom:15%;left:clamp(20px,8vw,96px);z-index:10;color:#fff;max-width:800px}
-        #hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(48px,8vw,90px);line-height:1.1;margin-bottom:20px;text-shadow:0 2px 10px rgba(0,0,0,0.5)}
+        #hero-overlay{position:absolute;inset:0;background:rgba(0,0,0,0.25)}
+        #hero-content{position:absolute;bottom:12%;left:clamp(20px,8vw,96px);z-index:10;color:#fff;max-width:850px}
+        .hero-tag{font-size:12px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:15px;display:block;color:var(--coral)}
+        #hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(40px,8vw,80px);line-height:1.1;margin-bottom:25px;font-weight:600}
         #hero-dots{position:absolute;bottom:40px;right:5vw;display:flex;gap:12px}
-        .dot{width:12px;height:12px;border-radius:50%;background:rgba(255,255,255,0.4);border:none;cursor:pointer}
-        .dot.active{background:var(--white);transform:scale(1.2)}
+        .dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,0.4);border:none;cursor:pointer}
+        .dot.active{background:var(--white);transform:scale(1.3)}
 
-        /* --- コンテンツセクション --- */
+        /* --- 5. 一覧/セクション共通 --- */
         .section{padding:100px clamp(16px,6vw,80px)}
-        .section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,5vw,48px);margin-bottom:40px;text-align:center}
-        .cards-grid{display:grid;grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));gap:30px}
-        .card{background:#fff;border-radius:0;overflow:hidden;transition:0.3s;border:1px solid #eee}
-        .card:hover{box-shadow:0 15px 40px rgba(0,0,0,0.1)}
-        .card-img{height:280px}
-        .card-body{padding:25px}
+        .section-header{max-width:800px;margin:0 auto 60px;text-align:center}
+        .section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,5vw,52px);margin-bottom:20px;font-weight:500}
+        .cards-grid{display:grid;grid-template-columns:repeat(auto-fit, minmax(340px, 1fr));gap:40px}
+        .card{background:transparent;overflow:hidden;transition:0.4s;cursor:pointer}
+        .card-img-wrap{height:450px;overflow:hidden;margin-bottom:20px;border-radius:2px}
+        .card:hover .card-img-wrap img{transform:scale(1.08)}
+        .card img{transition:0.6s}
+        .card-body h3{font-family:'Cormorant Garamond',serif;font-size:26px;margin-bottom:12px;font-weight:500}
+        .card-body p{font-size:15px;color:var(--gray);line-height:1.6}
+        .cat-label{font-size:11px;font-weight:700;letter-spacing:2px;color:var(--coral);text-transform:uppercase;margin-bottom:10px;display:block}
 
-        /* --- フッター (Visit Norway 完全反映) --- */
-        #footer-vn { background: var(--navy); color: #fff; padding: 80px clamp(16px, 6vw, 80px); }
-        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 60px; }
-        .footer-col h4 { font-size: 14px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; color: rgba(255,255,255,0.6); }
+        /* --- 6. 記事詳細ページ (Visit Norway風記事ページ) --- */
+        .detail-hero{height:70vh;position:relative}
+        .detail-container{max-width:800px;margin:-100px auto 100px;background:var(--white);padding:80px clamp(20px,8vw,100px);position:relative;z-index:10;box-shadow:0 30px 60px rgba(0,0,0,0.05)}
+        .detail-header{text-align:center;margin-bottom:50px}
+        .detail-title{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,5vw,48px);line-height:1.2;margin-bottom:30px}
+        .detail-body p{font-size:18px;margin-bottom:30px;color:#333;line-height:2}
+        .detail-body blockquote{font-family:'Cormorant Garamond',serif;font-size:28px;font-style:italic;color:var(--coral);border-left:3px solid var(--coral);padding-left:30px;margin:50px 0;line-height:1.4}
+        .soynemu-box{background:var(--sand);padding:40px;margin:60px 0;border-radius:4px}
+
+        /* --- 7. フッター --- */
+        #footer-vn { background: var(--navy); color: #fff; padding: 100px clamp(16px, 6vw, 80px) 40px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 60px; margin-bottom: 80px; }
+        .footer-col h4 { font-size: 13px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 30px; color: rgba(255,255,255,0.5); }
         .footer-col ul { list-style: none; }
-        .footer-col ul li { margin-bottom: 12px; }
-        .footer-col ul li a { color: #fff; font-size: 15px; transition: 0.2s; }
-        .footer-col ul li a:hover { opacity: 0.7; }
-        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 40px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+        .footer-col ul li { margin-bottom: 15px; }
+        .footer-col ul li a { color: #fff; font-size: 14px; opacity: 0.8; }
+        .footer-col ul li a:hover { opacity: 1; color: var(--coral); }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 50px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 30px; }
     </style>
 </head>
 <body>
@@ -68,9 +91,9 @@
         <div class="logo-text">SORA<span>TABI</span></div>
     </a>
     <div class="nav-links">
-        <button class="nav-link" onclick="showPage('top')">TOP</button>
-        <button class="nav-link" onclick="showPage('list')">STORIES</button>
-        <button class="nav-cta">旅に出る ✈</button>
+        <button class="nav-link" onclick="showPage('top')">Top</button>
+        <button class="nav-link" onclick="showPage('list')">Stories</button>
+        <button class="nav-cta">旅の相談をする</button>
     </div>
 </nav>
 
@@ -79,83 +102,119 @@
         <img id="hero-photo" src="" alt="">
         <div id="hero-overlay"></div>
         <div id="hero-content">
+            <span class="hero-tag">Inspiration for your next trip</span>
             <h1 id="hero-title"></h1>
-            <p id="hero-sub" style="font-size:18px; margin-bottom:40px; max-width:600px; opacity:0.9"></p>
-            <button style="padding:16px 40px; background:var(--coral); border:none; color:#fff; font-weight:700; cursor:pointer">詳しく見る</button>
+            <p id="hero-sub" style="font-size:18px; margin-bottom:40px; max-width:650px; opacity:0.9; line-height:1.6;"></p>
+            <button onclick="showPage('list')" style="padding:18px 45px; background:var(--coral); border:none; color:#fff; font-weight:700; letter-spacing:1px; border-radius:4px;">DISCOVER STORIES</button>
         </div>
         <div id="hero-dots"></div>
     </section>
 
     <div class="section">
-        <h2 class="section-title">Editor's Picks</h2>
+        <div class="section-header">
+            <span class="cat-label">Editor's Choice</span>
+            <h2 class="section-title">今、もっとも美しい場所へ</h2>
+            <p>世界中のホテルや絶景を、20〜30代の視点でセレクトした特別号。</p>
+        </div>
         <div class="cards-grid" id="featured-cards"></div>
     </div>
-
-    <footer id="footer-vn">
-        <div class="footer-grid">
-            <div class="footer-col">
-                <h4>Info</h4>
-                <ul>
-                    <li><a href="#">About Soratabi</a></li>
-                    <li><a href="#">Sustainability</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Contact</h4>
-                <ul>
-                    <li><a href="#">Contact us</a></li>
-                    <li><a href="#">Newsletter</a></li>
-                    <li><a href="#">Media and press</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Follow us</h4>
-                <div style="display:flex; gap:15px; font-size:20px;">
-                    <a href="#">FB</a> <a href="#">IG</a> <a href="#">YT</a>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <div class="logo-text" style="font-size:28px;">SORA<span>TABI</span></div>
-            <p style="opacity:0.5; font-size:12px;">Copyright © 2025 SORATABI Travel Magazine</p>
-        </div>
-    </footer>
 </div>
 
 <div id="page-list" class="page">
-    <div class="section">
-        <h2 class="section-title">All Stories</h2>
+    <div class="section" style="padding-top:140px;">
+        <div class="section-header">
+            <h2 class="section-title">All Stories</h2>
+            <p>海外ホテル、大自然の静寂、そして最高の眠りについて。</p>
+        </div>
         <div id="list-cards" class="cards-grid"></div>
-        <div style="text-align:center; margin-top:50px;">
-            <button onclick="showPage('top')" style="background:none; border:1px solid #333; padding:12px 30px;">TOPへ戻る</button>
+    </div>
+</div>
+
+<div id="page-detail" class="page">
+    <div class="detail-hero">
+        <img id="detail-main-img" src="" alt="">
+        <div id="hero-overlay"></div>
+    </div>
+    <div class="detail-container">
+        <div class="detail-header">
+            <span id="detail-cat" class="cat-label"></span>
+            <h1 id="detail-title" class="detail-title"></h1>
+            <p style="color:var(--gray)">Published on March 2026</p>
+        </div>
+        <div class="detail-body">
+            <p id="detail-lead" style="font-weight:600; font-size:22px;"></p>
+            <p>ノルウェーのフィヨルドを望むテラスで、冷たく澄んだ空気を吸い込むとき。あるいは、都会の喧騒を離れた隠れ家ホテルのベッドに体を沈めるとき。私たちは「本当の自分」に戻れる瞬間を見つけます。</p>
+            
+            <blockquote id="detail-quote">旅の贅沢とは、高級な物を持つことではなく、心の底からリラックスできる「時間」を持つこと。</blockquote>
+
+            <p>Visit Norwayが提唱する「Kos（コス）」という概念は、まさに現代の旅行者が求めているものかもしれません。心地よい空間、美味しい一杯、そして深い休息。</p>
+
+            <div class="soynemu-box">
+                <h3 style="margin-bottom:15px; font-family:'Cormorant Garamond',serif; font-size:24px;">Sleep with soynemu</h3>
+                <p style="font-size:16px; margin-bottom:0;">旅先での体験をより豊かなものにするのは、前夜の「良質な眠り」です。soynemuの枕は、どんな土地でもあなたを深い安らぎへと誘います。</p>
+            </div>
+            
+            <div style="text-align:center; margin-top:80px;">
+                <button onclick="showPage('list')" style="background:none; border:1px solid var(--ink); padding:15px 40px; font-weight:600;">記事一覧に戻る</button>
+            </div>
         </div>
     </div>
 </div>
 
+<footer id="footer-vn">
+    <div class="footer-grid">
+        <div class="footer-col">
+            <h4>Destinations</h4>
+            <ul>
+                <li><a href="#">Norway</a></li>
+                <li><a href="#">Russia</a></li>
+                <li><a href="#">Finland</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>About Magazine</h4>
+            <ul>
+                <li><a href="#">Our Story</a></li>
+                <li><a href="#">Sustainability</a></li>
+                <li><a href="#">soynemu Project</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Support</h4>
+            <ul>
+                <li><a href="#">Newsletter</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="logo-text" style="font-size:32px; color:white;">SORA<span>TABI</span></div>
+        <p style="opacity:0.4; font-size:13px;">Copyright © 2026 SORATABI / soynemu Project. All rights reserved.</p>
+    </div>
+</footer>
+
 <script>
-/* --- DATA (文字漏れを防ぐため完全にカプセル化) --- */
 const ARTICLES = [
-    { id:0, cat:"Resort", photo:"https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=800", title:"モルディブ、水上ヴィラで過ごす夢の5日間", lead:"エメラルドグリーンの海に浮かぶ楽園への完全ガイド。" },
-    { id:1, cat:"Culture", photo:"https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=800", title:"バリ島、神々の島で見つけた本当の自分", lead:"芸術と信仰が溶け合う島、ウブドの棚田を巡る。" },
-    { id:2, cat:"Nature", photo:"https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=800", title:"サントリーニ、青と白の世界で恋に落ちる", lead:"絵葉書のような風景が現実になる瞬間。" }
+    { id:0, cat:"Luxury Hotel", photo:"https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1000", title:"北欧の森に浮かぶツリーハウス、極上の静寂へ", lead:"自然と一体になる究極の開放感。soynemuの枕が運ぶ、森の深い眠りについて。" },
+    { id:1, cat:"Culture", photo:"https://images.unsplash.com/photo-1520106212299-d99c443e4568?w=1000", title:"白夜に溶ける、サンクトペテルブルクの幻想", lead:"終わらない夕暮れ。ロシアの静寂な街並みで見つけた、理想のコーヒーブレイク。" },
+    { id:2, cat:"Nature", photo:"https://images.unsplash.com/photo-1486326222733-6680455c1be1?w=1000", title:"フィヨルドの風を聴く。ノルウェーKosの旅", lead:"Visit Norwayが提案する「心地よさ」の正体。自分を取り戻すための旅路。" }
 ];
 
 const HEROES = [
-    { src:"https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=1600", title:"旅は<br>自分を変える。", sub:"20〜30代の旅好きが本当に行きたい場所だけを厳選してお届けします。" },
-    { src:"https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1600", title:"未知の<br>美しさを探して。", sub:"本物の旅ガイドを、SORATABIが厳選してお届けします。" }
+    { src:"https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1600", title:"旅は<br>心と体を整える。", sub:"Visit Norwayの開放感とhogehogeが提案する究極の休息。20〜30代の旅好きへ贈る新しい旅のスタンダード。" },
+    { src:"https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?w=1600", title:"未知の<br>静寂を探して。", sub:"都会の喧騒を離れ本当の開放感を味わえる場所だけを厳選しました。" }
 ];
 
 let heroIdx = 0;
 
 function cardHTML(a) {
     return `
-    <div class="card">
-        <div class="card-img"><img src="${a.photo}" alt=""></div>
+    <div class="card" onclick="openDetail(${a.id})">
+        <div class="card-img-wrap"><img src="${a.photo}" alt=""></div>
         <div class="card-body">
-            <small style="color:var(--coral); font-weight:700; text-transform:uppercase;">${a.cat}</small>
-            <h3 style="margin:10px 0; font-family:'Cormorant Garamond', serif; font-size:22px;">${a.title}</h3>
-            <p style="font-size:14px; color:#666; line-height:1.6;">${a.lead}</p>
+            <span class="cat-label">${a.cat}</span>
+            <h3>${a.title}</h3>
+            <p>${a.lead}</p>
         </div>
     </div>`;
 }
@@ -183,8 +242,19 @@ function goHero(i) {
 function showPage(p) {
     document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
     document.getElementById('page-' + p).classList.add('active');
-    if(p === 'list') document.getElementById('list-cards').innerHTML = ARTICLES.map(a => cardHTML(a)).join('');
+    if(p === 'list') {
+        document.getElementById('list-cards').innerHTML = ARTICLES.map(a => cardHTML(a)).join('');
+    }
     window.scrollTo(0,0);
+}
+
+function openDetail(id) {
+    const a = ARTICLES.find(item => item.id === id);
+    document.getElementById('detail-main-img').src = a.photo;
+    document.getElementById('detail-cat').textContent = a.cat;
+    document.getElementById('detail-title').textContent = a.title;
+    document.getElementById('detail-lead').textContent = a.lead;
+    showPage('detail');
 }
 
 window.addEventListener('scroll', () => {
@@ -194,7 +264,7 @@ window.addEventListener('scroll', () => {
 });
 
 buildHome();
-setInterval(() => { heroIdx = (heroIdx + 1) % HEROES.length; goHero(heroIdx); }, 6000);
+setInterval(() => { heroIdx = (heroIdx + 1) % HEROES.length; goHero(heroIdx); }, 7000);
 </script>
 </body>
 </html>
