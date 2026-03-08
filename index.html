@@ -1,217 +1,240 @@
-import { Link } from "react-router-dom";
-import { ArrowRight, MapPin, Plane, Building2 } from "lucide-react";
-import SiteHeader from "@/components/SiteHeader";
-import SiteFooter from "@/components/SiteFooter";
-import ArticleCard from "@/components/ArticleCard";
-import DestinationCard from "@/components/DestinationCard";
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>世界の美しい場所へ | Travel Guide 2026</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --background: 0 0% 100%;
+            --foreground: 222.2 84% 4.9%;
+            --primary: 199 89% 48%;
+            --primary-foreground: 210 40% 98%;
+            --sand: 35 33% 96%;
+            --accent: 199 89% 48%;
+            --card: 0 0% 100%;
+        }
+        body { font-family: 'Inter', 'sans-serif'; }
+        .bg-sand { background-color: #f7f5f2; }
+        .bg-gradient-hero {
+            background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.5));
+        }
+        .bg-gradient-ocean {
+            background: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%);
+        }
+        .animate-fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-white text-slate-900">
 
-import heroImg from "@/assets/hero-tropical.jpg";
-import destBali from "@/assets/dest-bali.jpg";
-import destHawaii from "@/assets/dest-hawaii.jpg";
-import destThailand from "@/assets/dest-thailand.jpg";
-import destCancun from "@/assets/dest-cancun.jpg";
-import articleWorkaway from "@/assets/article-workaway.jpg";
-import articleHotel from "@/assets/article-hotel.jpg";
-import articleFood from "@/assets/article-food.jpg";
-
-const destinations = [
-  { image: destBali, name: "バリ島", country: "インドネシア", articleCount: 12 },
-  { image: destHawaii, name: "ハワイ", country: "アメリカ", articleCount: 8 },
-  { image: destThailand, name: "バンコク", country: "タイ", articleCount: 15 },
-  { image: destCancun, name: "カンクン", country: "メキシコ", articleCount: 6 },
-];
-
-const articles = [
-  {
-    image: articleWorkaway,
-    category: "ワーキングホリデー",
-    title: "海外で働きながら旅する、ワーホリ完全ガイド2026",
-    excerpt: "ワーキングホリデービザの取得方法から現地での仕事探し、生活費の目安まで。初めてのワーホリを成功させるための全てを解説します。",
-    date: "2026年3月5日",
-    readTime: "8分で読める",
-    slug: "working-holiday-guide-2026",
-  },
-  {
-    image: articleHotel,
-    category: "ホテル",
-    title: "トランジットを最高に。空港近くのデイユースホテル5選",
-    excerpt: "長時間のトランジットを快適に過ごすための、デイユースプランがあるおすすめホテルをご紹介。シャワーや仮眠で旅の疲れをリフレッシュ。",
-    date: "2026年3月1日",
-    readTime: "5分で読める",
-    slug: "dayuse-hotel-transit",
-  },
-  {
-    image: articleFood,
-    category: "グルメ",
-    title: "東南アジアの夜市で食べるべきストリートフード10選",
-    excerpt: "バンコク、ホーチミン、台北…アジアの夜市で出会える、一度は味わいたい絶品ローカルグルメをフードライターが厳選。",
-    date: "2026年2月25日",
-    readTime: "6分で読める",
-    slug: "southeast-asia-street-food",
-  },
-];
-
-const features = [
-  {
-    icon: MapPin,
-    title: "目的地ガイド",
-    desc: "現地ライターによるリアルな観光情報",
-  },
-  {
-    icon: Building2,
-    title: "ホテル予約",
-    desc: "デイユース・トランジットプランも充実",
-  },
-  {
-    icon: Plane,
-    title: "ワーホリ支援",
-    desc: "ビザ取得から現地生活までサポート",
-  },
-];
-
-const Index = () => {
-  return (
-    <div className="min-h-screen bg-background">
-      <SiteHeader />
-
-      {/* Hero */}
-      <section className="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden">
-        <img
-          src={heroImg}
-          alt="トロピカルな楽園"
-          className="absolute inset-0 w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-hero" />
-        <div className="relative z-10 text-center px-6 max-w-3xl mx-auto animate-fade-in-up">
-          <p className="text-card/70 text-sm uppercase tracking-[0.3em] mb-4 font-body">
-            あなたの次の冒険を見つけよう
-          </p>
-          <h1 className="font-display text-5xl md:text-7xl font-bold text-card mb-6 leading-tight">
-            世界の美しい場所へ
-          </h1>
-          <p className="text-card/80 text-lg mb-8 font-body leading-relaxed">
-            海外ホテル・観光スポット・リゾートバイト・ワーキングホリデー。
-            <br className="hidden md:block" />
-            旅をもっと自由に、もっと近くに。
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              to="/articles"
-              className="inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground px-8 py-4 rounded-full font-body font-semibold text-sm tracking-wide hover:opacity-90 transition-opacity"
-            >
-              記事を読む <ArrowRight className="w-4 h-4" />
-            </Link>
-            <a
-              href="#destinations"
-              className="inline-flex items-center justify-center gap-2 bg-card/15 backdrop-blur-sm text-card border border-card/30 px-8 py-4 rounded-full font-body font-semibold text-sm tracking-wide hover:bg-card/25 transition-colors"
-            >
-              目的地を探す
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* Features */}
-      <section className="py-20 bg-sand">
-        <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {features.map((f, i) => (
-              <div
-                key={f.title}
-                className={`flex items-start gap-4 animate-fade-in-up animate-delay-${(i + 1) * 100}`}
-              >
-                <div className="w-12 h-12 rounded-xl bg-accent flex items-center justify-center shrink-0">
-                  <f.icon className="w-5 h-5 text-accent-foreground" />
-                </div>
-                <div>
-                  <h3 className="font-display text-lg font-semibold text-foreground mb-1">{f.title}</h3>
-                  <p className="text-sm text-muted-foreground font-body">{f.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Destinations */}
-      <section id="destinations" className="py-20">
-        <div className="container mx-auto px-6">
-          <div className="flex items-end justify-between mb-12">
-            <div>
-              <p className="text-primary text-xs uppercase tracking-[0.2em] font-body font-semibold mb-2">
-                Destinations
-              </p>
-              <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground">
-                人気の目的地
-              </h2>
-            </div>
-            <Link
-              to="/articles"
-              className="hidden md:flex items-center gap-1 text-sm text-primary font-medium hover:gap-2 transition-all font-body"
-            >
-              すべて見る <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-            {destinations.map((dest) => (
-              <DestinationCard key={dest.name} {...dest} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Latest Articles */}
-      <section className="py-20 bg-sand">
-        <div className="container mx-auto px-6">
-          <div className="flex items-end justify-between mb-12">
-            <div>
-              <p className="text-primary text-xs uppercase tracking-[0.2em] font-body font-semibold mb-2">
-                Latest
-              </p>
-              <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground">
-                最新の記事
-              </h2>
-            </div>
-            <Link
-              to="/articles"
-              className="hidden md:flex items-center gap-1 text-sm text-primary font-medium hover:gap-2 transition-all font-body"
-            >
-              すべて見る <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {articles.map((article) => (
-              <ArticleCard key={article.slug} {...article} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="py-24 bg-gradient-ocean text-primary-foreground">
-        <div className="container mx-auto px-6 text-center max-w-2xl">
-          <h2 className="font-display text-3xl md:text-4xl font-bold mb-4">
-            旅の最新情報をお届け
-          </h2>
-          <p className="text-primary-foreground/80 mb-8 font-body">
-            おすすめの旅先やお得なホテル情報、ワーホリ最新ニュースをメールでお届けします。
-          </p>
-          <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-            <input
-              type="email"
-              placeholder="メールアドレス"
-              className="flex-1 px-5 py-3 rounded-full bg-primary-foreground/15 backdrop-blur-sm border border-primary-foreground/30 text-primary-foreground placeholder:text-primary-foreground/50 text-sm font-body focus:outline-none focus:ring-2 focus:ring-primary-foreground/40"
-            />
-            <button className="px-6 py-3 rounded-full bg-card text-foreground font-body font-semibold text-sm hover:opacity-90 transition-opacity shrink-0">
-              登録する
+    <header class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-slate-100">
+        <div class="container mx-auto px-6 h-16 flex items-center justify-between">
+            <div class="font-bold text-xl tracking-tighter text-blue-600">TRAVELER</div>
+            <nav class="hidden md:flex gap-8 text-sm font-medium">
+                <a href="#" class="hover:text-blue-600 transition-colors">目的地</a>
+                <a href="#" class="hover:text-blue-600 transition-colors">記事一覧</a>
+                <a href="#" class="hover:text-blue-600 transition-colors">ワーホリ</a>
+            </nav>
+            <button class="bg-blue-600 text-white px-5 py-2 rounded-full text-sm font-semibold hover:bg-blue-700 transition-colors">
+                お問い合わせ
             </button>
-          </div>
         </div>
-      </section>
+    </header>
 
-      <SiteFooter />
-    </div>
-  );
-};
+    <section class="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=2000" 
+             alt="Hero" class="absolute inset-0 w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-hero"></div>
+        <div class="relative z-10 text-center px-6 max-w-3xl mx-auto animate-fade-in-up text-white">
+            <p class="text-white/70 text-sm uppercase tracking-[0.3em] mb-4">
+                あなたの次の冒険を見つけよう
+            </p>
+            <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+                世界の美しい場所へ
+            </h1>
+            <p class="text-white/80 text-lg mb-8 leading-relaxed">
+                海外ホテル・観光スポット・リゾートバイト・ワーキングホリデー。<br class="hidden md:block">
+                旅をもっと自由に、もっと近くに。
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#articles" class="inline-flex items-center justify-center gap-2 bg-blue-600 text-white px-8 py-4 rounded-full font-semibold text-sm tracking-wide hover:bg-blue-700 transition-all">
+                    記事を読む <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+                <a href="#destinations" class="inline-flex items-center justify-center gap-2 bg-white/15 backdrop-blur-sm text-white border border-white/30 px-8 py-4 rounded-full font-semibold text-sm tracking-wide hover:bg-white/25 transition-colors">
+                    目的地を探す
+                </a>
+            </div>
+        </div>
+    </section>
 
-export default Index;
+    <section class="py-20 bg-sand">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="flex items-start gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-blue-600 flex items-center justify-center shrink-0">
+                        <i data-lucide="map-pin" class="w-5 h-5 text-white"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold mb-1">目的地ガイド</h3>
+                        <p class="text-sm text-slate-500">現地ライターによるリアルな観光情報</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-blue-600 flex items-center justify-center shrink-0">
+                        <i data-lucide="building-2" class="w-5 h-5 text-white"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold mb-1">ホテル予約</h3>
+                        <p class="text-sm text-slate-500">デイユース・トランジットプランも充実</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-blue-600 flex items-center justify-center shrink-0">
+                        <i data-lucide="plane" class="w-5 h-5 text-white"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold mb-1">ワーホリ支援</h3>
+                        <p class="text-sm text-slate-500">ビザ取得から現地生活までサポート</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="destinations" class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="flex items-end justify-between mb-12">
+                <div>
+                    <p class="text-blue-600 text-xs uppercase tracking-[0.2em] font-semibold mb-2">Destinations</p>
+                    <h2 class="text-3xl md:text-4xl font-bold">人気の目的地</h2>
+                </div>
+                <a href="#" class="hidden md:flex items-center gap-1 text-sm text-blue-600 font-medium hover:gap-2 transition-all">
+                    すべて見る <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6" id="dest-container">
+                </div>
+        </div>
+    </section>
+
+    <section id="articles" class="py-20 bg-sand">
+        <div class="container mx-auto px-6">
+            <div class="flex items-end justify-between mb-12">
+                <div>
+                    <p class="text-blue-600 text-xs uppercase tracking-[0.2em] font-semibold mb-2">Latest</p>
+                    <h2 class="text-3xl md:text-4xl font-bold">最新の記事</h2>
+                </div>
+                <a href="#" class="hidden md:flex items-center gap-1 text-sm text-blue-600 font-medium hover:gap-2 transition-all">
+                    すべて見る <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="article-container">
+                </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-gradient-ocean text-white">
+        <div class="container mx-auto px-6 text-center max-w-2xl">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">旅の最新情報をお届け</h2>
+            <p class="text-white/80 mb-8">
+                おすすめの旅先やお得なホテル情報、ワーホリ最新ニュースをメールでお届けします。
+            </p>
+            <div class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+                <input type="email" placeholder="メールアドレス" class="flex-1 px-5 py-3 rounded-full bg-white/15 backdrop-blur-sm border border-white/30 text-white placeholder:text-white/50 text-sm focus:outline-none focus:ring-2 focus:ring-white/40">
+                <button class="px-6 py-3 rounded-full bg-white text-blue-600 font-semibold text-sm hover:bg-slate-100 transition-colors shrink-0">
+                    登録する
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-12 border-t border-slate-100 text-center text-sm text-slate-400">
+        <p>© 2026 TRAVELER. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Data from your React code
+        const destinations = [
+            { image: "https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&q=80&w=600", name: "バリ島", country: "インドネシア", articleCount: 12 },
+            { image: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&q=80&w=600", name: "ハワイ", country: "アメリカ", articleCount: 8 },
+            { image: "https://images.unsplash.com/photo-1504214208698-ea191f03f192?auto=format&fit=crop&q=80&w=600", name: "バンコク", country: "タイ", articleCount: 15 },
+            { image: "https://images.unsplash.com/photo-1512813195396-6e283a863cc4?auto=format&fit=crop&q=80&w=600", name: "カンクン", country: "メキシコ", articleCount: 6 },
+        ];
+
+        const articles = [
+            {
+                image: "https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?auto=format&fit=crop&q=80&w=800",
+                category: "ワーキングホリデー",
+                title: "海外で働きながら旅する、ワーホリ完全ガイド2026",
+                excerpt: "ワーキングホリデービザの取得方法から現地での仕事探し、生活費の目安まで...",
+                date: "2026年3月5日",
+                readTime: "8分で読める"
+            },
+            {
+                image: "https://images.unsplash.com/photo-1436491865332-7a61a109c0f3?auto=format&fit=crop&q=80&w=800",
+                category: "ホテル",
+                title: "トランジットを最高に。空港近くのデイユースホテル5選",
+                excerpt: "長時間のトランジットを快適に過ごすための、デイユースプランがあるおすすめホテル...",
+                date: "2026年3月1日",
+                readTime: "5分で読める"
+            },
+            {
+                image: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&q=80&w=800",
+                category: "グルメ",
+                title: "東南アジアの夜市で食べるべきストリートフード10選",
+                excerpt: "バンコク、ホーチミン、台北…アジアの夜市で出会える、一度は味わいたい絶品...",
+                date: "2026年2月25日",
+                readTime: "6分で読める"
+            }
+        ];
+
+        // Render Destinations
+        const destContainer = document.getElementById('dest-container');
+        destinations.forEach(dest => {
+            destContainer.innerHTML += `
+                <div class="group cursor-pointer">
+                    <div class="relative aspect-[3/4] overflow-hidden rounded-2xl mb-3">
+                        <img src="${dest.image}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        <div class="absolute bottom-4 left-4 text-white">
+                            <p class="text-[10px] uppercase tracking-wider opacity-80">${dest.country}</p>
+                            <h3 class="font-bold">${dest.name}</h3>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+
+        // Render Articles
+        const articleContainer = document.getElementById('article-container');
+        articles.forEach(article => {
+            articleContainer.innerHTML += `
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                    <img src="${article.image}" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <p class="text-blue-600 text-xs font-bold mb-2">${article.category}</p>
+                        <h3 class="font-bold text-lg mb-2 leading-tight">${article.title}</h3>
+                        <p class="text-slate-500 text-sm mb-4 line-clamp-2">${article.excerpt}</p>
+                        <div class="flex items-center justify-between text-[11px] text-slate-400 font-medium">
+                            <span>${article.date}</span>
+                            <span>${article.readTime}</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+
+        // Initialize Lucide Icons
+        lucide.createIcons();
+    </script>
+</body>
+</html>
