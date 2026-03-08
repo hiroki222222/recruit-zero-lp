@@ -1,270 +1,217 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SORATABI – Travel & Sleep Magazine</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <style>
-        /* --- 1. 基本設定（Visit Norway風のクリーンな余白） --- */
-        :root {
-            --ink: #111810;
-            --white: #fff;
-            --coral: #d95f3b;
-            --navy: #000044;
-            --sand: #f7f2ec;
-            --gray: #6b6560;
-            --light-bg: #FAF9F6;
-        }
-        *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-        html{scroll-behavior:smooth}
-        body{font-family:'DM Sans',sans-serif;background:var(--light-bg);color:var(--ink);overflow-x:hidden;line-height:1.7}
-        img{display:block;width:100%;height:100%;object-fit:cover}
-        button,a{cursor:pointer;font-family:'DM Sans',sans-serif;text-decoration:none;transition:0.3s}
+import { Link } from "react-router-dom";
+import { ArrowRight, MapPin, Plane, Building2 } from "lucide-react";
+import SiteHeader from "@/components/SiteHeader";
+import SiteFooter from "@/components/SiteFooter";
+import ArticleCard from "@/components/ArticleCard";
+import DestinationCard from "@/components/DestinationCard";
 
-        /* --- 2. ヘッダー（スクロールで色変化） --- */
-        #nav{position:fixed;top:0;left:0;right:0;z-index:300;height:72px;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(16px,6vw,80px);transition:0.35s}
-        #nav.solid{background:rgba(255, 255, 255, 0.98);box-shadow:0 2px 10px rgba(0,0,0,0.05)}
-        .logo-text{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:700;letter-spacing:2px;color:var(--white)}
-        #nav.solid .logo-text{color:var(--ink)}
-        .logo-text span{color:var(--coral)}
-        .nav-links{display:flex;gap:20px;align-items:center}
-        .nav-link{background:none;border:none;font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--white)}
-        #nav.solid .nav-link{color:var(--gray)}
-        .nav-cta{padding:10px 24px;background:var(--coral);border:none;border-radius:4px;color:var(--white);font-size:12px;font-weight:700}
+import heroImg from "@/assets/hero-tropical.jpg";
+import destBali from "@/assets/dest-bali.jpg";
+import destHawaii from "@/assets/dest-hawaii.jpg";
+import destThailand from "@/assets/dest-thailand.jpg";
+import destCancun from "@/assets/dest-cancun.jpg";
+import articleWorkaway from "@/assets/article-workaway.jpg";
+import articleHotel from "@/assets/article-hotel.jpg";
+import articleFood from "@/assets/article-food.jpg";
 
-        /* --- 3. ページ切り替え --- */
-        .page{display:none;animation:fadeIn 0.8s ease-out}
-        .page.active{display:block}
-        @keyframes fadeIn { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
-
-        /* --- 4. TOP: ヒーロー（Visit Norway完全リスペクト） --- */
-        #hero{position:relative;height:100vh;overflow:hidden;background:#000}
-        #hero-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity 1s ease-in-out;animation:kenburns 20s infinite alternate}
-        @keyframes kenburns { from{transform:scale(1)} to{transform:scale(1.1)} }
-        #hero-overlay{position:absolute;inset:0;background:rgba(0,0,0,0.25)}
-        #hero-content{position:absolute;bottom:12%;left:clamp(20px,8vw,96px);z-index:10;color:#fff;max-width:850px}
-        .hero-tag{font-size:12px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:15px;display:block;color:var(--coral)}
-        #hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(40px,8vw,80px);line-height:1.1;margin-bottom:25px;font-weight:600}
-        #hero-dots{position:absolute;bottom:40px;right:5vw;display:flex;gap:12px}
-        .dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,0.4);border:none;cursor:pointer}
-        .dot.active{background:var(--white);transform:scale(1.3)}
-
-        /* --- 5. 一覧/セクション共通 --- */
-        .section{padding:100px clamp(16px,6vw,80px)}
-        .section-header{max-width:800px;margin:0 auto 60px;text-align:center}
-        .section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,5vw,52px);margin-bottom:20px;font-weight:500}
-        .cards-grid{display:grid;grid-template-columns:repeat(auto-fit, minmax(340px, 1fr));gap:40px}
-        .card{background:transparent;overflow:hidden;transition:0.4s;cursor:pointer}
-        .card-img-wrap{height:450px;overflow:hidden;margin-bottom:20px;border-radius:2px}
-        .card:hover .card-img-wrap img{transform:scale(1.08)}
-        .card img{transition:0.6s}
-        .card-body h3{font-family:'Cormorant Garamond',serif;font-size:26px;margin-bottom:12px;font-weight:500}
-        .card-body p{font-size:15px;color:var(--gray);line-height:1.6}
-        .cat-label{font-size:11px;font-weight:700;letter-spacing:2px;color:var(--coral);text-transform:uppercase;margin-bottom:10px;display:block}
-
-        /* --- 6. 記事詳細ページ (Visit Norway風記事ページ) --- */
-        .detail-hero{height:70vh;position:relative}
-        .detail-container{max-width:800px;margin:-100px auto 100px;background:var(--white);padding:80px clamp(20px,8vw,100px);position:relative;z-index:10;box-shadow:0 30px 60px rgba(0,0,0,0.05)}
-        .detail-header{text-align:center;margin-bottom:50px}
-        .detail-title{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,5vw,48px);line-height:1.2;margin-bottom:30px}
-        .detail-body p{font-size:18px;margin-bottom:30px;color:#333;line-height:2}
-        .detail-body blockquote{font-family:'Cormorant Garamond',serif;font-size:28px;font-style:italic;color:var(--coral);border-left:3px solid var(--coral);padding-left:30px;margin:50px 0;line-height:1.4}
-        .soynemu-box{background:var(--sand);padding:40px;margin:60px 0;border-radius:4px}
-
-        /* --- 7. フッター --- */
-        #footer-vn { background: var(--navy); color: #fff; padding: 100px clamp(16px, 6vw, 80px) 40px; }
-        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 60px; margin-bottom: 80px; }
-        .footer-col h4 { font-size: 13px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 30px; color: rgba(255,255,255,0.5); }
-        .footer-col ul { list-style: none; }
-        .footer-col ul li { margin-bottom: 15px; }
-        .footer-col ul li a { color: #fff; font-size: 14px; opacity: 0.8; }
-        .footer-col ul li a:hover { opacity: 1; color: var(--coral); }
-        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 50px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 30px; }
-    </style>
-</head>
-<body>
-
-<nav id="nav">
-    <a href="#" class="logo" onclick="showPage('top');return false">
-        <div class="logo-text">SORA<span>TABI</span></div>
-    </a>
-    <div class="nav-links">
-        <button class="nav-link" onclick="showPage('top')">Top</button>
-        <button class="nav-link" onclick="showPage('list')">Stories</button>
-        <button class="nav-cta">旅の相談をする</button>
-    </div>
-</nav>
-
-<div id="page-top" class="page active">
-    <section id="hero">
-        <img id="hero-photo" src="" alt="">
-        <div id="hero-overlay"></div>
-        <div id="hero-content">
-            <span class="hero-tag">Inspiration for your next trip</span>
-            <h1 id="hero-title"></h1>
-            <p id="hero-sub" style="font-size:18px; margin-bottom:40px; max-width:650px; opacity:0.9; line-height:1.6;"></p>
-            <button onclick="showPage('list')" style="padding:18px 45px; background:var(--coral); border:none; color:#fff; font-weight:700; letter-spacing:1px; border-radius:4px;">DISCOVER STORIES</button>
-        </div>
-        <div id="hero-dots"></div>
-    </section>
-
-    <div class="section">
-        <div class="section-header">
-            <span class="cat-label">Editor's Choice</span>
-            <h2 class="section-title">今、もっとも美しい場所へ</h2>
-            <p>世界中のホテルや絶景を、20〜30代の視点でセレクトした特別号。</p>
-        </div>
-        <div class="cards-grid" id="featured-cards"></div>
-    </div>
-</div>
-
-<div id="page-list" class="page">
-    <div class="section" style="padding-top:140px;">
-        <div class="section-header">
-            <h2 class="section-title">All Stories</h2>
-            <p>海外ホテル、大自然の静寂、そして最高の眠りについて。</p>
-        </div>
-        <div id="list-cards" class="cards-grid"></div>
-    </div>
-</div>
-
-<div id="page-detail" class="page">
-    <div class="detail-hero">
-        <img id="detail-main-img" src="" alt="">
-        <div id="hero-overlay"></div>
-    </div>
-    <div class="detail-container">
-        <div class="detail-header">
-            <span id="detail-cat" class="cat-label"></span>
-            <h1 id="detail-title" class="detail-title"></h1>
-            <p style="color:var(--gray)">Published on March 2026</p>
-        </div>
-        <div class="detail-body">
-            <p id="detail-lead" style="font-weight:600; font-size:22px;"></p>
-            <p>ノルウェーのフィヨルドを望むテラスで、冷たく澄んだ空気を吸い込むとき。あるいは、都会の喧騒を離れた隠れ家ホテルのベッドに体を沈めるとき。私たちは「本当の自分」に戻れる瞬間を見つけます。</p>
-            
-            <blockquote id="detail-quote">旅の贅沢とは、高級な物を持つことではなく、心の底からリラックスできる「時間」を持つこと。</blockquote>
-
-            <p>Visit Norwayが提唱する「Kos（コス）」という概念は、まさに現代の旅行者が求めているものかもしれません。心地よい空間、美味しい一杯、そして深い休息。</p>
-
-            <div class="soynemu-box">
-                <h3 style="margin-bottom:15px; font-family:'Cormorant Garamond',serif; font-size:24px;">Sleep with soynemu</h3>
-                <p style="font-size:16px; margin-bottom:0;">旅先での体験をより豊かなものにするのは、前夜の「良質な眠り」です。soynemuの枕は、どんな土地でもあなたを深い安らぎへと誘います。</p>
-            </div>
-            
-            <div style="text-align:center; margin-top:80px;">
-                <button onclick="showPage('list')" style="background:none; border:1px solid var(--ink); padding:15px 40px; font-weight:600;">記事一覧に戻る</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<footer id="footer-vn">
-    <div class="footer-grid">
-        <div class="footer-col">
-            <h4>Destinations</h4>
-            <ul>
-                <li><a href="#">Norway</a></li>
-                <li><a href="#">Russia</a></li>
-                <li><a href="#">Finland</a></li>
-            </ul>
-        </div>
-        <div class="footer-col">
-            <h4>About Magazine</h4>
-            <ul>
-                <li><a href="#">Our Story</a></li>
-                <li><a href="#">Sustainability</a></li>
-                <li><a href="#">soynemu Project</a></li>
-            </ul>
-        </div>
-        <div class="footer-col">
-            <h4>Support</h4>
-            <ul>
-                <li><a href="#">Newsletter</a></li>
-                <li><a href="#">Contact Us</a></li>
-            </ul>
-        </div>
-    </div>
-    <div class="footer-bottom">
-        <div class="logo-text" style="font-size:32px; color:white;">SORA<span>TABI</span></div>
-        <p style="opacity:0.4; font-size:13px;">Copyright © 2026 SORATABI / soynemu Project. All rights reserved.</p>
-    </div>
-</footer>
-
-<script>
-const ARTICLES = [
-    { id:0, cat:"Luxury Hotel", photo:"https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1000", title:"北欧の森に浮かぶツリーハウス、極上の静寂へ", lead:"自然と一体になる究極の開放感。soynemuの枕が運ぶ、森の深い眠りについて。" },
-    { id:1, cat:"Culture", photo:"https://images.unsplash.com/photo-1520106212299-d99c443e4568?w=1000", title:"白夜に溶ける、サンクトペテルブルクの幻想", lead:"終わらない夕暮れ。ロシアの静寂な街並みで見つけた、理想のコーヒーブレイク。" },
-    { id:2, cat:"Nature", photo:"https://images.unsplash.com/photo-1486326222733-6680455c1be1?w=1000", title:"フィヨルドの風を聴く。ノルウェーKosの旅", lead:"Visit Norwayが提案する「心地よさ」の正体。自分を取り戻すための旅路。" }
+const destinations = [
+  { image: destBali, name: "バリ島", country: "インドネシア", articleCount: 12 },
+  { image: destHawaii, name: "ハワイ", country: "アメリカ", articleCount: 8 },
+  { image: destThailand, name: "バンコク", country: "タイ", articleCount: 15 },
+  { image: destCancun, name: "カンクン", country: "メキシコ", articleCount: 6 },
 ];
 
-const HEROES = [
-    { src:"https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1600", title:"旅は<br>心と体を整える。", sub:"20〜30代の旅好きへ贈る、新しい旅のスタンダード。" },
-    { src:"https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?w=1600", title:"未知の<br>旅を探して。", sub:"都会のノイズを脱ぎ捨てて、無垢な旅路へ。" }
+const articles = [
+  {
+    image: articleWorkaway,
+    category: "ワーキングホリデー",
+    title: "海外で働きながら旅する、ワーホリ完全ガイド2026",
+    excerpt: "ワーキングホリデービザの取得方法から現地での仕事探し、生活費の目安まで。初めてのワーホリを成功させるための全てを解説します。",
+    date: "2026年3月5日",
+    readTime: "8分で読める",
+    slug: "working-holiday-guide-2026",
+  },
+  {
+    image: articleHotel,
+    category: "ホテル",
+    title: "トランジットを最高に。空港近くのデイユースホテル5選",
+    excerpt: "長時間のトランジットを快適に過ごすための、デイユースプランがあるおすすめホテルをご紹介。シャワーや仮眠で旅の疲れをリフレッシュ。",
+    date: "2026年3月1日",
+    readTime: "5分で読める",
+    slug: "dayuse-hotel-transit",
+  },
+  {
+    image: articleFood,
+    category: "グルメ",
+    title: "東南アジアの夜市で食べるべきストリートフード10選",
+    excerpt: "バンコク、ホーチミン、台北…アジアの夜市で出会える、一度は味わいたい絶品ローカルグルメをフードライターが厳選。",
+    date: "2026年2月25日",
+    readTime: "6分で読める",
+    slug: "southeast-asia-street-food",
+  },
 ];
 
-let heroIdx = 0;
+const features = [
+  {
+    icon: MapPin,
+    title: "目的地ガイド",
+    desc: "現地ライターによるリアルな観光情報",
+  },
+  {
+    icon: Building2,
+    title: "ホテル予約",
+    desc: "デイユース・トランジットプランも充実",
+  },
+  {
+    icon: Plane,
+    title: "ワーホリ支援",
+    desc: "ビザ取得から現地生活までサポート",
+  },
+];
 
-function cardHTML(a) {
-    return `
-    <div class="card" onclick="openDetail(${a.id})">
-        <div class="card-img-wrap"><img src="${a.photo}" alt=""></div>
-        <div class="card-body">
-            <span class="cat-label">${a.cat}</span>
-            <h3>${a.title}</h3>
-            <p>${a.lead}</p>
+const Index = () => {
+  return (
+    <div className="min-h-screen bg-background">
+      <SiteHeader />
+
+      {/* Hero */}
+      <section className="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden">
+        <img
+          src={heroImg}
+          alt="トロピカルな楽園"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-hero" />
+        <div className="relative z-10 text-center px-6 max-w-3xl mx-auto animate-fade-in-up">
+          <p className="text-card/70 text-sm uppercase tracking-[0.3em] mb-4 font-body">
+            あなたの次の冒険を見つけよう
+          </p>
+          <h1 className="font-display text-5xl md:text-7xl font-bold text-card mb-6 leading-tight">
+            世界の美しい場所へ
+          </h1>
+          <p className="text-card/80 text-lg mb-8 font-body leading-relaxed">
+            海外ホテル・観光スポット・リゾートバイト・ワーキングホリデー。
+            <br className="hidden md:block" />
+            旅をもっと自由に、もっと近くに。
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              to="/articles"
+              className="inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground px-8 py-4 rounded-full font-body font-semibold text-sm tracking-wide hover:opacity-90 transition-opacity"
+            >
+              記事を読む <ArrowRight className="w-4 h-4" />
+            </Link>
+            <a
+              href="#destinations"
+              className="inline-flex items-center justify-center gap-2 bg-card/15 backdrop-blur-sm text-card border border-card/30 px-8 py-4 rounded-full font-body font-semibold text-sm tracking-wide hover:bg-card/25 transition-colors"
+            >
+              目的地を探す
+            </a>
+          </div>
         </div>
-    </div>`;
-}
+      </section>
 
-function buildHome() {
-    document.getElementById('featured-cards').innerHTML = ARTICLES.map(a => cardHTML(a)).join('');
-    document.getElementById('hero-dots').innerHTML = HEROES.map((_,i) => `<button class="dot ${i===0?'active':''}" onclick="goHero(${i})"></button>`).join('');
-    goHero(0);
-}
+      {/* Features */}
+      <section className="py-20 bg-sand">
+        <div className="container mx-auto px-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {features.map((f, i) => (
+              <div
+                key={f.title}
+                className={`flex items-start gap-4 animate-fade-in-up animate-delay-${(i + 1) * 100}`}
+              >
+                <div className="w-12 h-12 rounded-xl bg-accent flex items-center justify-center shrink-0">
+                  <f.icon className="w-5 h-5 text-accent-foreground" />
+                </div>
+                <div>
+                  <h3 className="font-display text-lg font-semibold text-foreground mb-1">{f.title}</h3>
+                  <p className="text-sm text-muted-foreground font-body">{f.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-function goHero(i) {
-    heroIdx = i;
-    const h = HEROES[i];
-    const photo = document.getElementById('hero-photo');
-    photo.style.opacity = 0;
-    setTimeout(() => {
-        photo.src = h.src;
-        document.getElementById('hero-title').innerHTML = h.title;
-        document.getElementById('hero-sub').textContent = h.sub;
-        photo.style.opacity = 1;
-    }, 500);
-    document.querySelectorAll('.dot').forEach((d,idx) => d.classList.toggle('active', idx === i));
-}
+      {/* Destinations */}
+      <section id="destinations" className="py-20">
+        <div className="container mx-auto px-6">
+          <div className="flex items-end justify-between mb-12">
+            <div>
+              <p className="text-primary text-xs uppercase tracking-[0.2em] font-body font-semibold mb-2">
+                Destinations
+              </p>
+              <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground">
+                人気の目的地
+              </h2>
+            </div>
+            <Link
+              to="/articles"
+              className="hidden md:flex items-center gap-1 text-sm text-primary font-medium hover:gap-2 transition-all font-body"
+            >
+              すべて見る <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+            {destinations.map((dest) => (
+              <DestinationCard key={dest.name} {...dest} />
+            ))}
+          </div>
+        </div>
+      </section>
 
-function showPage(p) {
-    document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
-    document.getElementById('page-' + p).classList.add('active');
-    if(p === 'list') {
-        document.getElementById('list-cards').innerHTML = ARTICLES.map(a => cardHTML(a)).join('');
-    }
-    window.scrollTo(0,0);
-}
+      {/* Latest Articles */}
+      <section className="py-20 bg-sand">
+        <div className="container mx-auto px-6">
+          <div className="flex items-end justify-between mb-12">
+            <div>
+              <p className="text-primary text-xs uppercase tracking-[0.2em] font-body font-semibold mb-2">
+                Latest
+              </p>
+              <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground">
+                最新の記事
+              </h2>
+            </div>
+            <Link
+              to="/articles"
+              className="hidden md:flex items-center gap-1 text-sm text-primary font-medium hover:gap-2 transition-all font-body"
+            >
+              すべて見る <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {articles.map((article) => (
+              <ArticleCard key={article.slug} {...article} />
+            ))}
+          </div>
+        </div>
+      </section>
 
-function openDetail(id) {
-    const a = ARTICLES.find(item => item.id === id);
-    document.getElementById('detail-main-img').src = a.photo;
-    document.getElementById('detail-cat').textContent = a.cat;
-    document.getElementById('detail-title').textContent = a.title;
-    document.getElementById('detail-lead').textContent = a.lead;
-    showPage('detail');
-}
+      {/* CTA */}
+      <section className="py-24 bg-gradient-ocean text-primary-foreground">
+        <div className="container mx-auto px-6 text-center max-w-2xl">
+          <h2 className="font-display text-3xl md:text-4xl font-bold mb-4">
+            旅の最新情報をお届け
+          </h2>
+          <p className="text-primary-foreground/80 mb-8 font-body">
+            おすすめの旅先やお得なホテル情報、ワーホリ最新ニュースをメールでお届けします。
+          </p>
+          <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+            <input
+              type="email"
+              placeholder="メールアドレス"
+              className="flex-1 px-5 py-3 rounded-full bg-primary-foreground/15 backdrop-blur-sm border border-primary-foreground/30 text-primary-foreground placeholder:text-primary-foreground/50 text-sm font-body focus:outline-none focus:ring-2 focus:ring-primary-foreground/40"
+            />
+            <button className="px-6 py-3 rounded-full bg-card text-foreground font-body font-semibold text-sm hover:opacity-90 transition-opacity shrink-0">
+              登録する
+            </button>
+          </div>
+        </div>
+      </section>
 
-window.addEventListener('scroll', () => {
-    const nav = document.getElementById('nav');
-    if(window.scrollY > 80) nav.classList.add('solid');
-    else nav.classList.remove('solid');
-});
+      <SiteFooter />
+    </div>
+  );
+};
 
-buildHome();
-setInterval(() => { heroIdx = (heroIdx + 1) % HEROES.length; goHero(heroIdx); }, 7000);
-</script>
-</body>
-</html>
+export default Index;
