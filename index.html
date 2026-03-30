@@ -1,88 +1,222 @@
+<!-- LINE FLOAT BUTTON -->
+<a href="#" class="line-float">
+  LINEで無料相談する
+</a>
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZERO TALENT | 逆転キャリアシナリオ</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: { 'zt-blue': '#005BAC', 'line-green': '#28C000' },
-                    fontFamily: { 'mont': ['Montserrat', 'sans-serif'], 'noto': ['Noto Sans JP', 'sans-serif'] }
-                }
-            }
-        }
-    </script>
-    <style>
-        body { font-family: 'Noto Sans JP', sans-serif; }
-        .hero-gradient { background: linear-gradient(135deg, #005BAC 0%, #003e75 100%); }
-        .skew-bg { transform: skewY(-3deg); margin-top: -50px; }
-        .skew-content { transform: skewY(3deg); }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>by ZERO TALENT | 逆転キャリアシナリオ</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{--teal:#00B4C8;--teal-dark:#008FA0;--navy:#1a1a3e;--purple:#2d1f5e;}
+body{font-family:'Noto Sans JP',sans-serif;color:#1a1a2e;overflow-x:hidden;}
+a{text-decoration:none;color:inherit;}
+
+header{position:sticky;top:0;z-index:100;background:#fff;border-bottom:1px solid #eee;}
+.hd-inner{max-width:1100px;margin:0 auto;padding:0 24px;height:60px;display:flex;align-items:center;justify-content:space-between;}
+.logo-wrap{display:flex;flex-direction:column;line-height:1;}
+.logo-by{font-size:9px;font-weight:700;color:#999;letter-spacing:.15em;margin-bottom:3px;}
+.logo{font-family:'Montserrat',sans-serif;font-weight:900;font-size:20px;color:var(--teal);letter-spacing:-1px;}
+nav{display:flex;gap:20px;}
+nav a{font-size:10px;font-weight:700;color:#555;letter-spacing:.08em;display:flex;flex-direction:column;align-items:center;gap:2px;}
+nav a span{font-size:8px;color:#999;font-weight:400;}
+
+.hero{position:relative;background:linear-gradient(135deg,#1a1a3e 0%,#2d1f5e 60%,#1a3a4e 100%);overflow:hidden;min-height:380px;display:flex;align-items:center;}
+.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.55;}
+.hero-content{position:relative;z-index:2;max-width:1100px;margin:0 auto;padding:60px 24px;}
+.hero-eyebrow{font-size:10px;font-weight:700;color:var(--teal);letter-spacing:.2em;margin-bottom:12px;}
+.hero-content h1{font-size:clamp(22px,4vw,44px);font-weight:900;color:#fff;line-height:1.3;text-shadow:0 2px 12px rgba(0,0,0,.4);}
+.hero-content h1 span{color:var(--teal);}
+
+.about{max-width:1100px;margin:0 auto;padding:64px 24px;display:grid;grid-template-columns:1fr 1.6fr;gap:48px;align-items:start;}
+.about-label{font-size:10px;font-weight:700;color:var(--teal);letter-spacing:.2em;margin-bottom:8px;display:flex;align-items:center;gap:6px;}
+.about-label::before{content:'';width:20px;height:2px;background:var(--teal);}
+.about h2{font-size:26px;font-weight:900;margin-bottom:0;}
+.about-body p{font-size:13px;line-height:2;color:#444;margin-bottom:12px;}
+.btn-teal{display:inline-flex;align-items:center;gap:8px;background:var(--teal);color:#fff;font-size:12px;font-weight:700;padding:12px 28px;border-radius:4px;margin-top:16px;}
+.btn-teal::after{content:'›';font-size:16px;}
+
+.agent{background:linear-gradient(135deg,#1a1a3e 0%,#2d1f5e 100%);padding:64px 24px;text-align:center;}
+.agent .sec-label{font-size:10px;font-weight:700;color:var(--teal);letter-spacing:.2em;margin-bottom:32px;}
+.agent-single{max-width:280px;margin:0 auto 36px;}
+.ag-card{background:rgba(255,255,255,.07);border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,.1);}
+.ag-card img{width:100%;aspect-ratio:3/4;object-fit:cover;display:block;filter:grayscale(20%);}
+.ag-card-body{padding:16px;color:#fff;text-align:left;}
+.ag-card-body .role{font-size:8px;color:var(--teal);font-weight:700;letter-spacing:.1em;margin-bottom:6px;}
+.ag-card-body .name{font-size:15px;font-weight:700;}
+.ag-card-body .en{font-size:9px;color:rgba(255,255,255,.45);margin-top:4px;}
+.btn-teal-outline{display:inline-flex;align-items:center;gap:8px;border:2px solid var(--teal);color:var(--teal);background:transparent;font-size:12px;font-weight:700;padding:12px 28px;border-radius:4px;}
+.btn-teal-outline::after{content:'›';font-size:16px;}
+
+.other-service{padding:64px 24px;background:#fff;}
+.sec-label-row{text-align:center;margin-bottom:40px;}
+.sec-label-row .en{font-size:10px;font-weight:700;letter-spacing:.2em;color:var(--teal);}
+.service-cards{max-width:900px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+.svc-card{border-radius:12px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.08);}
+.svc-badge{font-size:9px;font-weight:700;padding:3px 10px;border-radius:20px;display:inline-block;margin-bottom:10px;}
+.svc-badge.b1{background:#e0f7f9;color:#007a8a;}
+.svc-badge.b2{background:#e8f4e8;color:#2a7a2a;}
+.svc-card img{width:100%;height:180px;object-fit:cover;display:block;}
+.svc-card-body{padding:20px;}
+.svc-card-body h4{font-size:15px;font-weight:900;margin-bottom:8px;}
+.svc-card-body p{font-size:11px;color:#666;line-height:1.8;margin-bottom:14px;}
+
+.footer-nav{padding:48px 24px;background:#fff;border-top:1px solid #eee;}
+.fn-grid{max-width:900px;margin:0 auto 32px;display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+.fn-item{display:flex;justify-content:space-between;align-items:center;padding:14px 16px;border:1px solid #eee;border-radius:6px;}
+.fn-item-text .en{font-size:13px;font-weight:900;letter-spacing:.05em;}
+.fn-item-text .ja{font-size:9px;color:#999;margin-top:2px;}
+.fn-item .arrow{color:var(--teal);font-size:18px;font-weight:700;}
+.fn-ctas{max-width:900px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.fn-cta-line{background:var(--teal);color:#fff;font-size:13px;font-weight:700;padding:16px;border-radius:6px;text-align:center;}
+.fn-cta-biz{background:#1a1a3e;color:#fff;font-size:13px;font-weight:700;padding:16px;border-radius:6px;text-align:center;}
+  .fn-cta-line small,.fn-cta-biz small{display:block;font-size:9px;font-weight:400;opacity:.8;margin-top:2px;}
+.line-float{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);z-index:200;display:flex;align-items:center;gap:10px;background:#28C000;color:#fff;font-size:14px;font-weight:700;padding:16px 32px;border-radius:50px;box-shadow:0 8px 24px rgba(40,192,0,.45);white-space:nowrap;}
+.line-float .line-icon{width:24px;height:24px;background:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;color:#28C000;flex-shrink:0;}
+.line-cta-section{padding:64px 24px;background:#f0faf0;text-align:center;border-top:1px solid #d4edda;}
+.line-cta-section h3{font-size:22px;font-weight:900;margin-bottom:8px;}
+.line-cta-section p{font-size:13px;color:#555;margin-bottom:28px;line-height:1.8;}
+.btn-line-lg{display:inline-flex;align-items:center;gap:12px;background:#28C000;color:#fff;font-size:18px;font-weight:700;padding:20px 48px;border-radius:50px;box-shadow:0 8px 24px rgba(40,192,0,.35);}
+.btn-line-lg .line-icon{width:28px;height:28px;background:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:900;color:#28C000;}
+
+footer{padding:32px 24px;background:#f0f0f0;text-align:center;}
+.footer-by{font-size:9px;color:#999;letter-spacing:.15em;margin-bottom:4px;}
+.footer-logo{font-family:'Montserrat',sans-serif;font-weight:900;font-size:28px;color:var(--teal);letter-spacing:-1px;margin-bottom:12px;}
+footer p{font-size:10px;color:#999;}
+
+@media(max-width:768px){
+  nav{display:none;}
+  .about{grid-template-columns:1fr;}
+  .fn-grid{grid-template-columns:1fr 1fr;}
+  .service-cards{grid-template-columns:1fr;}
+}
+</style>
 </head>
-<body class="bg-white text-slate-900 overflow-x-hidden">
+<body>
 
-    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md px-6 py-4 flex items-center justify-between border-b border-gray-100">
-        <div class="flex items-center gap-2">
-            <div class="w-8 h-8 bg-zt-blue flex items-center justify-center text-white font-mont font-black text-xl rounded-sm italic">Z</div>
-            <span class="text-lg font-black tracking-tighter text-zt-blue font-mont uppercase">ZERO TALENT</span>
-        </div>
-        <a href="#cta" class="bg-line-green text-white text-[10px] font-bold py-2 px-4 rounded-full shadow-lg">無料面談はこちら</a>
-    </header>
+<!-- HEADER -->
+<header>
+  <div class="hd-inner">
+    <div class="logo-wrap">
+      <span class="logo-by">by ZERO TALENT</span>
+      <span class="logo">CAREER SUPPORT</span>
+    </div>
+    <nav>
+      <a href="#">SERVICE<span>サービス紹介</span></a>
+      <a href="#">ABOUT US<span>わたしたちについて</span></a>
+      <a href="#">AGENT<span>エージェント紹介</span></a>
+      <a href="#">INTERVIEW<span>インタビュー</span></a>
+      <a href="#">MEDIA<span>メディア</span></a>
+      <a href="#">NEWS<span>ニュース</span></a>
+      <a href="#">COMPANY<span>会社概要</span></a>
+      <a href="#">CAREERS<span>採用情報</span></a>
+    </nav>
+  </div>
+</header>
 
-    <section class="relative pt-20 pb-32 px-6 hero-gradient text-white overflow-hidden">
-        <div class="max-w-4xl mx-auto relative z-10">
-            <p class="text-sm font-bold tracking-widest mb-4 opacity-80 uppercase font-mont">Scenario for Success</p>
-            <h2 class="text-4xl md:text-6xl font-black leading-tight mb-8 font-noto">
-                ゼロタレから始まる、<br>
-                <span class="text-white">あなただけの</span><br>
-                <span class="bg-white text-zt-blue px-2 inline-block mt-2 transform -rotate-1">逆転キャリアシナリオ</span>
-            </h2>
-            <p class="text-base mb-10 opacity-90 leading-relaxed max-w-lg">
-                学歴や職歴にとらわれず、10年後を見据えた"逆転シナリオ"を一緒に描きます。
-            </p>
-            <a href="#cta" class="bg-line-green text-white text-xl font-bold py-5 px-12 rounded-full inline-block shadow-2xl hover:scale-105 transition-transform w-full md:w-auto text-center">
-                LINEで無料面談を予約する
-            </a>
-        </div>
-        <div class="absolute -right-20 -bottom-20 text-[20rem] font-mont font-black opacity-10 italic select-none">Z</div>
-    </section>
+<!-- HERO -->
+<section class="hero">
+  <img class="hero-img" src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=60" alt="">
+  <div class="hero-content">
+    <div class="hero-eyebrow">by ZERO TALENT — Scenario for Success</div>
+    <h1>ゼロタレから始まる、あなただけの<br><span>逆転キャリアシナリオ</span></h1>
+  </div>
+</section>
 
-    <section class="bg-white py-20 px-6 relative skew-bg">
-        <div class="skew-content max-w-6xl mx-auto">
-            <h3 class="text-2xl md:text-4xl font-black text-zt-blue text-center mb-16 font-noto underline decoration-zt-blue/20 decoration-8 underline-offset-8">
-                SCENARIOS <span class="text-slate-300 block text-sm mt-2 font-mont font-bold">キャリアの可能性</span>
-            </h3>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="group bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-100 hover:-translate-y-2 transition-all">
-                    <div class="h-48 bg-slate-200 relative overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=400" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                        <div class="absolute top-4 left-4 bg-zt-blue text-white text-[10px] px-3 py-1 font-bold">BUSINESS</div>
-                    </div>
-                    <div class="p-6">
-                        <h4 class="font-bold text-lg mb-2">ハイクラス「ビジネスマン」</h4>
-                        <p class="text-xs text-slate-500 leading-relaxed italic">未経験から、市場価値の高いリーダー層へ。</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- ABOUT -->
+<section>
+  <div class="about">
+    <div>
+      <div class="about-label">ABOUT</div>
+      <h2>逆転キャリア<br>シナリオ</h2>
+    </div>
+    <div class="about-body">
+      <p>ゼロタレは、私たちの素人力ではありません。<br>学歴や職歴にとらわれず、10年後を見据えた<br>"逆転シナリオ"を一緒に描きます。</p>
+      <p>専門のエージェントが、転職からその先のキャリアまで伴走します。<br>過去ではなく、"これから"をつくるための転職支援を、あなたと。</p>
+      <a href="#" class="btn-teal">もっと詳しく見る</a>
+    </div>
+  </div>
+</section>
 
-    <footer id="cta" class="py-24 px-6 bg-slate-50 text-center border-t border-gray-100">
-        <div class="max-w-2xl mx-auto">
-            <h2 class="text-3xl font-black mb-10 text-zt-blue leading-tight">
-                過去ではなく、"これから"を。<br>
-                まずはLINEで相談。
-            </h2>
-            <a href="#" class="bg-line-green text-white text-2xl font-bold py-6 px-12 rounded-full inline-block shadow-2xl w-full">
-                LINEで無料面談
-            </a>
-            <p class="mt-12 text-[10px] text-slate-400 font-mont font-bold">© 2025 ZERO TALENT ALL RIGHTS RESERVED.</p>
-        </div>
-    </footer>
+<!-- AGENT -->
+<section class="agent">
+  <div class="sec-label">AGENT ／ エージェント紹介</div>
+  <div class="agent-single">
+    <div class="ag-card">
+      <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=60" alt="鈴木太郎">
+      <div class="ag-card-body">
+        <div class="role">AGENT</div>
+        <div class="name">鈴木 太郎</div>
+        <div class="en">SUZUKI TARO</div>
+      </div>
+    </div>
+  </div>
+  <a href="#" class="btn-teal-outline">エージェントに相談する</a>
+</section>
+
+<!-- OTHER SERVICE -->
+<section class="other-service">
+  <div class="sec-label-row">
+    <div class="en">OTHER SERVICE ／ その他サービス</div>
+  </div>
+  <div class="service-cards">
+    <div class="svc-card">
+      <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&w=700&q=60" alt="">
+      <div class="svc-card-body">
+        <span class="svc-badge b1">ゼロタレ 就活支援</span>
+        <h4>若手ポテンシャル層向けサービス</h4>
+        <p>ゼロタレでは、第二新卒や社会人1〜3年目の方向けに、ポテンシャル採用に特化した転職支援サービスを提供しています。企業が重視するポテンシャルにフォーカスし、あなたの"これから"を一緒に設計します。</p>
+        <a href="#" class="btn-teal">もっと詳しく見る</a>
+      </div>
+    </div>
+    <div class="svc-card">
+      <img src="https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=700&q=60" alt="">
+      <div class="svc-card-body">
+        <span class="svc-badge b2">ゼロタレワールド</span>
+        <h4>人材エージェント向けサービス</h4>
+        <p>ゼロタレワールドは、人材業界に従事するプロ人材を最大限に活かすためのプラットフォームです。担当者と企業をつなぎ、業務効率化と求職者へのサポートを一緒に実現します。</p>
+        <a href="#" class="btn-teal">もっと詳しく見る</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LINE CTA SECTION -->
+<section class="line-cta-section">
+  <h3>まずはLINEで、無料相談</h3>
+  <a href="#" class="btn-line-lg">
+    LINE友だち追加（無料）
+  </a>
+</section>
+
+<!-- FOOTER NAV -->
+<section class="footer-nav">
+  <div class="fn-grid">
+    <div class="fn-item"><div class="fn-item-text"><div class="en">SERVICE</div><div class="ja">サービス紹介</div></div><span class="arrow">›</span></div>
+    <div class="fn-item"><div class="fn-item-text"><div class="en">ABOUT US</div><div class="ja">わたしたちについて</div></div><span class="arrow">›</span></div>
+    <div class="fn-item"><div class="fn-item-text"><div class="en">AGENT</div><div class="ja">エージェント紹介</div></div><span class="arrow">›</span></div>
+    <div class="fn-item"><div class="fn-item-text"><div class="en">INTERVIEW</div><div class="ja">インタビュー</div></div><span class="arrow">›</span></div>
+    <div class="fn-item"><div class="fn-item-text"><div class="en">MEDIA</div><div class="ja">メディア</div></div><span class="arrow">›</span></div>
+    <div class="fn-item"><div class="fn-item-text"><div class="en">NEWS</div><div class="ja">ニュース</div></div><span class="arrow">›</span></div>
+    <div class="fn-item"><div class="fn-item-text"><div class="en">COMPANY</div><div class="ja">会社概要</div></div><span class="arrow">›</span></div>
+    <div class="fn-item"><div class="fn-item-text"><div class="en">CAREERS</div><div class="ja">採用情報</div></div><span class="arrow">›</span></div>
+  </div>
+  <div class="fn-ctas">
+    <div class="fn-cta-line">LINEで問い合わせる<small>無料相談はこちら ›</small></div>
+    <div class="fn-cta-biz">法人のお問い合わせ<small>採用をご検討の企業様はこちら ›</small></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-by">by ZERO TALENT Partner Program</div>
+  <div class="footer-logo">ゼロタレ</div>
+  <p>© 2026 Career Hub Partner. All rights reserved.</p>
+</footer>
 
 </body>
 </html>
