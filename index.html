@@ -20,7 +20,16 @@ header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.96);backdr
 .logo-main{font-family:'Montserrat',sans-serif;font-weight:900;font-size:20px;color:var(--teal);letter-spacing:-1px;}
 .hd-right{display:flex;align-items:center;gap:16px;}
 .hd-line-btn{background:var(--line);color:#fff;font-size:11px;font-weight:700;padding:10px 20px;border-radius:40px;white-space:nowrap;}
-.hamburger{display:flex;flex-direction:column;gap:5px;cursor:pointer;padding:6px;background:none;border:none;}
+
+/* pill nav */
+.pill-nav{background:#e8f0fb;border-radius:50px;padding:8px 8px 8px 24px;display:flex;align-items:center;gap:4px;}
+.pill-nav a.pill-link{font-size:13px;font-weight:700;color:#1a4a9a;padding:6px 16px;border-radius:40px;white-space:nowrap;transition:background .2s;}
+.pill-nav a.pill-link:hover{background:rgba(26,74,154,.1);}
+.pill-nav a.pill-contact{display:flex;align-items:center;gap:8px;background:#1a3a7a;color:#fff;font-size:13px;font-weight:700;padding:10px 22px;border-radius:40px;white-space:nowrap;}
+.pill-nav a.pill-contact svg{width:16px;height:16px;fill:#fff;flex-shrink:0;}
+
+/* hamburger (mobile only) */
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;background:none;border:none;}
 .hamburger span{display:block;width:22px;height:2px;background:#333;border-radius:2px;transition:all .3s;}
 .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
 .hamburger.open span:nth-child(2){opacity:0;}
@@ -64,10 +73,10 @@ header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.96);backdr
 .sec-head p{font-size:13px;color:#666;line-height:1.9;margin-top:16px;}
 
 /* ========== PAIN ========== */
-.pain{background:#f7f9fa;}
-.pain-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;}
+.pain{background:#f7f9fa;} .pain .sec-inner{display:flex;flex-direction:column;align-items:center;}
+.pain-grid{display:flex;flex-direction:column;align-items:center;gap:40px;justify-content:center;}
 .pain-img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:16px;}
-.pain-list{display:flex;flex-direction:column;gap:14px;}
+.pain-list{display:flex;flex-direction:column;gap:14px;width:100%;max-width:600px;}
 .pain-item{display:flex;align-items:flex-start;gap:14px;background:#fff;padding:18px 20px;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,.05);}
 .pain-icon{width:32px;height:32px;border-radius:50%;background:rgba(0,180,200,.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px;}
 .pain-item p{font-size:13px;font-weight:700;line-height:1.6;color:#1a1a2e;}
@@ -152,6 +161,8 @@ footer p{font-size:10px;color:#bbb;}
 
 /* ========== RESPONSIVE ========== */
 @media(max-width:768px){
+  .pill-nav{display:none;}
+  .hamburger{display:flex;}
   .hero-inner{grid-template-columns:1fr;}
   .hero-badge-wrap{display:none;}
   .pain-grid{grid-template-columns:1fr;}
@@ -176,7 +187,16 @@ footer p{font-size:10px;color:#bbb;}
       <span class="logo-main">CAREER SUPPORT</span>
     </div>
     <div class="hd-right">
-      <a href="#cta" class="hd-line-btn">LINE無料相談</a>
+      <nav class="pill-nav">
+        <a href="#" class="pill-link">4つのSTEP</a>
+        <a href="#" class="pill-link">選ばれる理由</a>
+        <a href="#" class="pill-link">サービス</a>
+        <a href="#faq" class="pill-link">よくある質問</a>
+        <a href="#cta" class="pill-contact">
+          <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          お問い合わせ
+        </a>
+      </nav>
       <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
     </div>
   </div>
@@ -190,7 +210,6 @@ footer p{font-size:10px;color:#bbb;}
     <li><a href="#">SERVICE <span class="ja">サービス紹介</span></a></li>
     <li><a href="#">ABOUT US <span class="ja">わたしたちについて</span></a></li>
     <li><a href="#">AGENT <span class="ja">エージェント紹介</span></a></li>
-    <li><a href="#">COMPANY <span class="ja">会社概要</span></a></li>
   </ul>
   <div class="gnav-cta"><a href="#cta">LINEで無料相談する</a></div>
 </nav>
@@ -220,7 +239,7 @@ footer p{font-size:10px;color:#bbb;}
   <div class="sec-inner">
     <div class="sec-head">
       <div class="en">PAIN POINT</div>
-      <h2>そのひとことが、<em>言えなかった。</em></h2>
+      <h2>そのひとことが、<em>ずっと言えなかった。</em></h2>
     </div>
     <div class="pain-grid">
       <img class="pain-img" src="https://via.placeholder.com/600x450.png?text=[参考]デスクで悩む日本人若手の画像" alt="">
@@ -246,19 +265,19 @@ footer p{font-size:10px;color:#bbb;}
       <div class="reason-card" data-num="01">
         <div class="reason-num">REASON 01</div>
         <h4>愚痴でもいい。<br>本音を話せる場所</h4>
-        <p>形式的な面談ではなく、LINEチャットであなたのペースに合わせて進めます。</p>
+        <p>形式的な面談ではなく、LINEチャットであなたのペースに合わせて進めます。転職意思がなくても大丈夫。まず話すだけでいい。</p>
         <div class="reason-stat">累計<span style="font-size:32px;font-weight:900;">2,500</span><small>名以上の相談実績</small></div>
       </div>
       <div class="reason-card" data-num="02">
         <div class="reason-num">REASON 02</div>
         <h4>「こんな仕事あるんだ」が<br>きっと見つかる</h4>
-        <p>ゼロタレ提携ネットワークから、あなたの強みを活かせる企業だけをご紹介します。</p>
+        <p>ゼロタレ提携ネットワークから、一般には出回らない優良案件をLINEへ直接お届け。あなたの強みを活かせる企業だけをご紹介します。</p>
         <div class="reason-stat"><span style="font-size:32px;font-weight:900;">3,000</span><small>件以上の非公開求人</small></div>
       </div>
       <div class="reason-card" data-num="03">
         <div class="reason-num">REASON 03</div>
         <h4>一人じゃないから、<br>最後まで進める</h4>
-        <p>書類添削・面接対策・入社後フォローまで、担当エージェントが伴走します。</p>
+        <p>書類添削・面接対策・入社後フォローまで、担当エージェントが伴走します。転職はゴールではなく、スタート。その先まで一緒に考えます。</p>
         <div class="reason-stat">内定率<span style="font-size:32px;font-weight:900;">92.4</span><small>%（提携先実績含む）</small></div>
       </div>
     </div>
@@ -277,22 +296,22 @@ footer p{font-size:10px;color:#bbb;}
       <div class="step">
         <div class="step-circle"><span>01</span></div>
         <h4>LINE友だち追加</h4>
-        <p>ボタンをタップするだけ。履歴書・登録フォーム不要。</p>
+        <p>30秒で完了。登録フォーム不要。</p>
       </div>
       <div class="step">
         <div class="step-circle"><span>02</span></div>
         <h4>ヒアリング</h4>
-        <p>担当エージェントがあなたの状況や希望をチャットで丁寧に確認。</p>
+        <p>あなたの状況や希望をチャットで丁寧に確認。</p>
       </div>
       <div class="step">
         <div class="step-circle"><span>03</span></div>
         <h4>求人提案＆対策</h4>
-        <p>非公開求人をご紹介。書類・面接対策まで徹底サポート。</p>
+        <p>書類・面接対策まで徹底サポート。</p>
       </div>
       <div class="step">
         <div class="step-circle"><span>04</span></div>
         <h4>内定・入社</h4>
-        <p>条件交渉・入社後フォローまで、ゴールの先まで一緒に。</p>
+        <p>条件交渉・入社後フォローまで、一緒に。</p>
       </div>
     </div>
   </div>
@@ -374,7 +393,7 @@ footer p{font-size:10px;color:#bbb;}
 </section>
 
 <!-- CTA -->
-<section class="cta-section" id="cta">
+<section class="cta-section" id="cta" style="padding:48px 24px;">
   <p>まずはLINEで、無料相談。<br>登録はたった30秒、履歴書も不要です。</p>
   <a href="#" class="cta-btn">LINE友だち追加（無料）</a>
   <div class="cta-note">※ 無料・強制なし・いつでも退会可能</div>
@@ -386,7 +405,6 @@ footer p{font-size:10px;color:#bbb;}
     <div class="fn-item"><div class="fn-item-text"><div class="en">SERVICE</div><div class="ja">サービス紹介</div></div><span class="fn-arrow">›</span></div>
     <div class="fn-item"><div class="fn-item-text"><div class="en">ABOUT US</div><div class="ja">わたしたちについて</div></div><span class="fn-arrow">›</span></div>
     <div class="fn-item"><div class="fn-item-text"><div class="en">AGENT</div><div class="ja">エージェント紹介</div></div><span class="fn-arrow">›</span></div>
-    <div class="fn-item"><div class="fn-item-text"><div class="en">COMPANY</div><div class="ja">会社概要</div></div><span class="fn-arrow">›</span></div>
   </div>
   <div class="fn-cta">
     <a href="#cta" class="fn-cta-line">LINEで無料相談する<small>登録30秒・完全無料 ›</small></a>
@@ -397,6 +415,11 @@ footer p{font-size:10px;color:#bbb;}
 <footer>
   <div class="footer-by">by ZERO TALENT Partner Program</div>
   <div class="footer-logo">ゼロタレ</div>
+  <div style="font-size:11px;color:#999;margin-bottom:16px;line-height:2;">
+    会社名：株式会社ゼロタレント<br>
+    所在地：〒000-0000 東京都〇〇区〇〇1-2-3<br>
+    TEL：03-0000-0000　／　MAIL：info@zerotalent.co.jp
+  </div>
   <p>© 2026 Career Hub Partner. All rights reserved.</p>
 </footer>
 
