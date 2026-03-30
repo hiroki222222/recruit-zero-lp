@@ -3,132 +3,154 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>by ZERO TALENT | 20代・第二新卒のLINEキャリア相談</title>
+    <title>by ZERO TALENT | iPhone 12 Pro Full LP</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    colors: {
-                        'zt-blue': '#005BAC', // ゼロタレ公式ネイビー
-                        'line-green': '#28C000', // LINE公式グリーン
-                        'soft-bg': '#F8FAFC',
-                    }
+                    colors: { 'zt-blue': '#005BAC', 'line-green': '#28C000' }
                 }
             }
         }
     </script>
     <style>
-        body { font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", sans-serif; color: #1a202c; }
-        .line-shadow { box-shadow: 0 10px 25px -5px rgba(40, 192, 0, 0.4); }
-        .glass-header { backdrop-filter: blur(8px); background-color: rgba(255, 255, 255, 0.9); }
+        body { font-family: "Helvetica Neue", Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+        .hero-title { font-size: 32px; line-height: 1.3; }
+        .section-title { font-size: 22px; font-weight: 900; color: #005BAC; margin-bottom: 2rem; text-align: center; }
+        .line-shadow { box-shadow: 0 8px 20px rgba(40, 192, 0, 0.3); }
     </style>
 </head>
-<body class="bg-white">
+<body class="bg-white text-slate-900 overflow-x-hidden">
 
-    <header class="glass-header sticky top-0 z-50 border-b border-gray-100">
-        <div class="container mx-auto px-4 py-4 flex items-center justify-between">
-            <div class="flex flex-col">
-                <span class="text-[10px] font-bold text-zt-blue tracking-[0.2em] leading-none mb-1">by ZERO TALENT</span>
-                <h1 class="text-lg font-black text-slate-900 tracking-tight">CAREER SUPPORT</h1>
-            </div>
-            <a href="#line" class="bg-line-green text-white text-xs font-bold py-2 px-5 rounded-full line-shadow active:scale-95 transition">
-                LINE無料相談
-            </a>
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-100 px-5 py-3 flex items-center justify-between">
+        <div class="flex flex-col">
+            <span class="text-[9px] font-bold text-zt-blue tracking-widest mb-0.5 uppercase">by ZERO TALENT</span>
+            <span class="text-sm font-black tracking-tighter">CAREER SUPPORT</span>
         </div>
+        <a href="#cta" class="bg-line-green text-white text-[10px] font-bold py-2 px-4 rounded-full line-shadow">LINE無料相談</a>
     </header>
 
-    <section class="relative overflow-hidden pt-16 pb-24 px-4 bg-gradient-to-b from-slate-50 to-white">
-        <div class="container mx-auto max-w-6xl grid md:grid-cols-2 gap-12 items-center">
-            <div class="text-center md:text-left z-10">
-                <h2 class="text-4xl md:text-6xl font-black mb-8 leading-[1.2] text-slate-900">
-                    モヤモヤしたまま、<br><span class="text-zt-blue">働き続けるの？</span>
-                </h2>
-                <p class="text-lg text-slate-600 mb-10 font-medium leading-relaxed">
-                    履歴書不要。20代専門のプロアドバイザーに、<br class="hidden md:block">
-                    LINEでこっそり相談から始めよう。
-                </p>
-                <a href="#line" class="bg-line-green text-white text-xl font-bold py-5 px-12 rounded-full inline-block line-shadow hover:scale-105 transition-transform w-full md:w-auto">
-                    LINEで無料相談 (30秒)
-                </a>
+    <section class="pt-8 pb-12 px-5 bg-gradient-to-b from-blue-50 to-white text-center">
+        <h2 class="hero-title font-black mb-6">モヤモヤしたまま、<br><span class="text-zt-blue">働き続けるの？</span></h2>
+        <p class="text-sm text-slate-600 mb-8 leading-relaxed">履歴書不要。20代専門のプロに、<br>LINEでこっそり相談から。</p>
+        <img src="https://via.placeholder.com/700x700.png?text=Photo1_Hero" alt="Hero" class="rounded-3xl shadow-xl mb-10 w-full aspect-square object-cover">
+        <a href="#cta" class="bg-line-green text-white text-lg font-bold py-4 px-10 rounded-full inline-block w-full line-shadow">LINEで無料相談 (30秒)</a>
+    </section>
+
+    <section class="py-16 px-6 bg-slate-900 text-white rounded-t-[40px]">
+        <h3 class="section-title !text-white !mb-10">こんな悩みありませんか？</h3>
+        <div class="space-y-4">
+            <div class="flex items-center gap-4 p-5 bg-white/5 rounded-2xl border-l-4 border-zt-blue">
+                <span class="text-zt-blue font-black text-xl">✓</span>
+                <p class="text-sm font-bold leading-relaxed">将来が不安。今の会社でいいの？</p>
             </div>
-            <div class="relative">
-                <img src="https://via.placeholder.com/800x800.png?text=[Photo1]+爽やかな笑顔でスマホを見る若手" alt="Main Visual" class="rounded-[2rem] shadow-2xl w-full object-cover aspect-square">
-                <div class="absolute -bottom-6 -left-6 bg-white p-6 rounded-2xl shadow-xl hidden md:block">
-                    <p class="text-zt-blue font-black text-2xl">内定率 92.4%</p>
-                    <p class="text-xs text-slate-400 font-bold">※提携先実績含む</p>
-                </div>
+            <div class="flex items-center gap-4 p-5 bg-white/5 rounded-2xl border-l-4 border-zt-blue">
+                <span class="text-zt-blue font-black text-xl">✓</span>
+                <p class="text-sm font-bold leading-relaxed">やりたいことが見つからない</p>
+            </div>
+            <div class="flex items-center gap-4 p-5 bg-white/5 rounded-2xl border-l-4 border-zt-blue">
+                <span class="text-zt-blue font-black text-xl">✓</span>
+                <p class="text-sm font-bold leading-relaxed">転職サイトの登録がとにかく面倒</p>
             </div>
         </div>
     </section>
 
-    <section class="py-20 bg-slate-900 text-white px-4">
-        <div class="container mx-auto max-w-4xl text-center">
-            <h3 class="text-2xl md:text-3xl font-bold mb-12">こんな悩み、LINEで解決できます</h3>
-            <div class="grid md:grid-cols-2 gap-6 text-left">
-                <img src="https://via.placeholder.com/600x400.png?text=[Photo2]+デスクで少し悩む若手" alt="User Image" class="rounded-2xl opacity-80 h-full object-cover">
-                <div class="space-y-4 flex flex-col justify-center">
-                    <div class="flex items-center gap-4 p-5 bg-slate-800 rounded-xl border-l-4 border-zt-blue">
-                        <span class="text-zt-blue font-black text-xl">✓</span>
-                        <p class="font-bold">将来が不安。今のままでいいの？</p>
-                    </div>
-                    <div class="flex items-center gap-4 p-5 bg-slate-800 rounded-xl border-l-4 border-zt-blue">
-                        <span class="text-zt-blue font-black text-xl">✓</span>
-                        <p class="font-bold">やりたいことが見つからない</p>
-                    </div>
-                    <div class="flex items-center gap-4 p-5 bg-slate-800 rounded-xl border-l-4 border-zt-blue">
-                        <span class="text-zt-blue font-black text-xl">✓</span>
-                        <p class="font-bold">転職サイトの登録がとにかく面倒</p>
-                    </div>
-                </div>
+    <section class="py-16 px-6 bg-white">
+        <h3 class="section-title">解決策：LINEひとつで、<br>キャリアが動き出す。</h3>
+        <p class="text-sm text-slate-500 leading-relaxed text-center mb-8">
+            ゼロタレ提携のプロが、あなたの「本音」をチャットで受け止め、最適な道を示します。
+        </p>
+        <img src="https://via.placeholder.com/600x400.png?text=Photo2_Solution" class="rounded-2xl shadow-md">
+    </section>
+
+    <section class="py-16 px-6 bg-slate-50">
+        <h3 class="section-title">選ばれる3つの理由</h3>
+        <div class="space-y-12">
+            <div class="relative pl-4">
+                <span class="text-6xl font-black text-zt-blue/10 absolute -top-6 -left-2 italic">01</span>
+                <h4 class="text-lg font-black text-zt-blue mb-2">本音でチャット対話</h4>
+                <p class="text-sm text-slate-500 leading-relaxed">形式的な面談はなし。友達感覚で相談可能です。</p>
+            </div>
+            <div class="relative pl-4">
+                <span class="text-6xl font-black text-zt-blue/10 absolute -top-6 -left-2 italic">02</span>
+                <h4 class="text-lg font-black text-zt-blue mb-2">限定の非公開求人</h4>
+                <p class="text-sm text-slate-500 leading-relaxed">LINE限定の優良求人を優先的に配信します。</p>
+            </div>
+            <div class="relative pl-4">
+                <span class="text-6xl font-black text-zt-blue/10 absolute -top-6 -left-2 italic">03</span>
+                <h4 class="text-lg font-black text-zt-blue mb-2">内定までフルサポート</h4>
+                <p class="text-sm text-slate-500 leading-relaxed">面接対策もLINE動画で分かりやすく伝授。</p>
             </div>
         </div>
     </section>
 
-    <section class="py-24 px-4 bg-white">
-        <div class="container mx-auto max-w-6xl">
-            <div class="grid md:grid-cols-3 gap-16">
-                <div class="relative">
-                    <img src="https://via.placeholder.com/400x300.png?text=[Photo3]+笑顔のアドバイザー" alt="Benefit 1" class="rounded-2xl mb-8 w-full object-cover">
-                    <span class="absolute top-0 left-0 text-8xl font-black text-zt-blue opacity-10 -translate-y-10">01</span>
-                    <h4 class="text-xl font-black mb-4 text-zt-blue italic">本音でチャット対話</h4>
-                    <p class="text-slate-500 text-sm leading-loose">形式的な面談ではなく、友達感覚のチャットであなたの本音に寄り添います。</p>
-                </div>
-                <div class="relative">
-                    <img src="https://via.placeholder.com/400x300.png?text=[Photo4]+LINEで求人を見る手元" alt="Benefit 2" class="rounded-2xl mb-8 w-full object-cover">
-                    <span class="absolute top-0 left-0 text-8xl font-black text-zt-blue opacity-10 -translate-y-10">02</span>
-                    <h4 class="text-xl font-black mb-4 text-zt-blue italic">限定の非公開求人</h4>
-                    <p class="text-slate-500 text-sm leading-loose">ゼロタレ提携網から、一般には出回らない優良案件をLINEへ直接お届け。</p>
-                </div>
-                <div class="relative">
-                    <img src="https://via.placeholder.com/400x300.png?text=[Photo5]+内定で喜ぶ若手" alt="Benefit 3" class="rounded-2xl mb-8 w-full object-cover">
-                    <span class="absolute top-0 left-0 text-8xl font-black text-zt-blue opacity-10 -translate-y-10">03</span>
-                    <h4 class="text-xl font-black mb-4 text-zt-blue italic">内定までフルサポート</h4>
-                    <p class="text-slate-500 text-sm leading-loose">書類の書き方から面接のコツまで、LINE動画とチャットで徹底フォロー。</p>
-                </div>
+    <section class="py-16 px-6 bg-white">
+        <h3 class="section-title">非公開求人事例</h3>
+        <div class="grid gap-6">
+            <div class="bg-white border border-slate-100 rounded-2xl shadow-sm overflow-hidden">
+                <img src="https://via.placeholder.com/400x250.png?text=Case1" class="w-full h-32 object-cover">
+                <div class="p-4"><p class="font-bold text-sm">大手企業営業 / 年収450万〜</p></div>
+            </div>
+            <div class="bg-white border border-slate-100 rounded-2xl shadow-sm overflow-hidden">
+                <img src="https://via.placeholder.com/400x250.png?text=Case2" class="w-full h-32 object-cover">
+                <div class="p-4"><p class="font-bold text-sm">ITベンチャー企画 / 未経験歓迎</p></div>
             </div>
         </div>
     </section>
 
-    <footer id="line" class="py-24 px-4 text-center bg-soft-bg border-t border-slate-100">
-        <div class="container mx-auto max-w-4xl">
-            <img src="https://via.placeholder.com/200x200.png?text=[Photo6]+笑顔のアイコン" alt="Advisor" class="w-24 h-24 rounded-full mx-auto mb-8 object-cover border-4 border-white shadow-lg">
-            <h2 class="text-3xl md:text-5xl font-black mb-10 leading-tight text-slate-900">
-                まずはLINEで、<br>選択肢を広げよう。
-            </h2>
-            <a href="#" class="bg-line-green text-white text-2xl font-bold py-6 px-16 rounded-full inline-block line-shadow hover:scale-105 transition-transform w-full md:w-auto">
-                LINE友だち追加 (無料)
-            </a>
-            <div class="mt-20 pt-10 border-t border-slate-200">
-                <p class="text-xs font-bold text-zt-blue tracking-widest uppercase mb-4">by ZERO TALENT Partner Program</p>
-                <p class="text-[10px] text-slate-400">© 2026 Career Hub Partner. All rights reserved.</p>
+    <section class="py-16 px-6 bg-zt-blue text-white">
+        <h3 class="section-title !text-white">LINE登録3ステップ</h3>
+        <div class="space-y-10">
+            <div class="text-center">
+                <div class="w-10 h-10 bg-white text-zt-blue rounded-full flex items-center justify-center font-black mx-auto mb-3">1</div>
+                <p class="font-bold">友だち追加</p>
+            </div>
+            <div class="text-center">
+                <div class="w-10 h-10 bg-white text-zt-blue rounded-full flex items-center justify-center font-black mx-auto mb-3">2</div>
+                <p class="font-bold">アンケート回答</p>
+            </div>
+            <div class="text-center">
+                <div class="w-10 h-10 bg-white text-zt-blue rounded-full flex items-center justify-center font-black mx-auto mb-3">3</div>
+                <p class="font-bold">チャット開始</p>
             </div>
         </div>
+    </section>
+
+    <section class="py-16 px-6 bg-white">
+        <h3 class="section-title">利用者の声</h3>
+        <div class="p-6 bg-slate-50 rounded-2xl mb-6 italic text-sm leading-relaxed">
+            「LINEだから本音で話せました。1ヶ月で内定が出て驚いています！」(24歳・女性)
+        </div>
+        <div class="p-6 bg-slate-50 rounded-2xl italic text-sm leading-relaxed">
+            「今の会社にバレずに転職活動ができるのが最高でした。」(26歳・男性)
+        </div>
+    </section>
+
+    <section class="py-16 px-6 bg-slate-50">
+        <h3 class="section-title">よくある質問</h3>
+        <div class="space-y-4 text-sm">
+            <details class="bg-white p-4 rounded-xl shadow-sm"><summary class="font-bold">費用はかかりますか？</summary><p class="mt-2 text-slate-500">全て無料です。</p></details>
+            <details class="bg-white p-4 rounded-xl shadow-sm"><summary class="font-bold">相談だけでもいい？</summary><p class="mt-2 text-slate-500">もちろんです！</p></details>
+        </div>
+    </section>
+
+    <section class="py-16 px-6 bg-white text-center">
+        <h3 class="section-title">アドバイザー紹介</h3>
+        <img src="https://via.placeholder.com/200x200.png?text=Advisor" class="w-24 h-24 rounded-full mx-auto mb-4 border-4 border-slate-50">
+        <p class="font-bold">キャリアアドバイザー 田中</p>
+        <p class="text-xs text-slate-500 mt-2 leading-relaxed">あなたの理想を一緒にカタチにします。</p>
+    </section>
+
+    <footer id="cta" class="py-20 px-6 bg-slate-900 text-white text-center">
+        <h2 class="text-2xl font-black mb-10 leading-tight">まずはLINEで、<br>選択肢を広げよう。</h2>
+        <a href="#" class="bg-line-green text-white text-lg font-bold py-5 px-12 rounded-full inline-block w-full line-shadow mb-12">LINE友だち追加 (無料)</a>
+        <p class="text-[10px] text-slate-500 font-bold tracking-widest uppercase">© 2026 by ZERO TALENT Partner</p>
     </footer>
 
-    <div class="fixed bottom-6 left-4 right-4 md:hidden z-50">
-        <a href="#line" class="bg-line-green text-white text-center py-4 rounded-full font-bold shadow-2xl block text-lg active:scale-95 transition-all flex items-center justify-center gap-3">
-            <span class="bg-white text-line-green rounded-full w-6 h-6 flex items-center justify-center text-xs">L</span>
+    <div class="fixed bottom-6 left-5 right-5 z-50 md:hidden">
+        <a href="#cta" class="bg-line-green text-white text-center py-4 rounded-full font-bold shadow-2xl block text-base flex items-center justify-center gap-2">
+            <span class="bg-white text-line-green rounded-full w-5 h-5 flex items-center justify-center text-[10px] font-black">L</span>
             LINEで無料相談する
         </a>
     </div>
