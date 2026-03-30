@@ -88,11 +88,31 @@ footer{padding:32px 24px;background:#f0f0f0;text-align:center;}
 .footer-logo{font-family:'Montserrat',sans-serif;font-weight:900;font-size:28px;color:var(--teal);letter-spacing:-1px;margin-bottom:12px;}
 footer p{font-size:10px;color:#999;}
 
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;background:none;border:none;}
+.hamburger span{display:block;width:24px;height:2px;background:#333;border-radius:2px;transition:all .3s;}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.gnav-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:150;}
+.gnav-overlay.open{display:block;}
+.gnav{position:fixed;top:0;right:-280px;width:280px;height:100%;background:#fff;z-index:200;transition:right .3s ease;padding:72px 0 40px;overflow-y:auto;}
+.gnav.open{right:0;}
+.gnav-close{position:absolute;top:18px;right:20px;background:none;border:none;font-size:22px;cursor:pointer;color:#555;}
+.gnav ul{list-style:none;}
+.gnav ul li a{display:flex;justify-content:space-between;align-items:center;padding:16px 28px;font-size:13px;font-weight:700;color:#1a1a2e;border-bottom:1px solid #f0f0f0;letter-spacing:.05em;}
+.gnav ul li a .ja{font-size:9px;color:#999;font-weight:400;margin-left:8px;}
+.gnav ul li a::after{content:'›';color:var(--teal);font-size:18px;}
+.gnav-line{margin:24px 20px 0;}
+.gnav-line a{display:block;background:#28C000;color:#fff;text-align:center;font-size:13px;font-weight:700;padding:14px;border-radius:6px;}
 @media(max-width:768px){
   nav{display:none;}
+  .hamburger{display:flex;}
   .about{grid-template-columns:1fr;}
   .fn-grid{grid-template-columns:1fr 1fr;}
   .service-cards{grid-template-columns:1fr;}
+}
+@media(min-width:769px){
+  .hamburger{display:flex;}
 }
 </style>
 </head>
@@ -113,8 +133,38 @@ footer p{font-size:10px;color:#999;}
       <a href="#">COMPANY<span>会社概要</span></a>
       <a href="#">CAREERS<span>採用情報</span></a>
     </nav>
+    <button class="hamburger" id="hamburger" aria-label="メニュー">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </header>
+
+<!-- GLOBAL NAV -->
+<div class="gnav-overlay" id="gnav-overlay"></div>
+<nav class="gnav" id="gnav">
+  <button class="gnav-close" id="gnav-close">✕</button>
+  <ul>
+    <li><a href="#">SERVICE <span class="ja">サービス紹介</span></a></li>
+    <li><a href="#">ABOUT US <span class="ja">わたしたちについて</span></a></li>
+    <li><a href="#">AGENT <span class="ja">エージェント紹介</span></a></li>
+    <li><a href="#">INTERVIEW <span class="ja">インタビュー</span></a></li>
+    <li><a href="#">COMPANY <span class="ja">会社概要</span></a></li>
+    <li><a href="#">CAREERS <span class="ja">採用情報</span></a></li>
+  </ul>
+  <div class="gnav-line"><a href="#">LINEで無料相談する</a></div>
+</nav>
+
+<script>
+const btn=document.getElementById('hamburger');
+const gnav=document.getElementById('gnav');
+const overlay=document.getElementById('gnav-overlay');
+const close=document.getElementById('gnav-close');
+function openMenu(){btn.classList.add('open');gnav.classList.add('open');overlay.classList.add('open');}
+function closeMenu(){btn.classList.remove('open');gnav.classList.remove('open');overlay.classList.remove('open');}
+btn.addEventListener('click',()=>gnav.classList.contains('open')?closeMenu():openMenu());
+close.addEventListener('click',closeMenu);
+overlay.addEventListener('click',closeMenu);
+</script>
 
 <!-- HERO -->
 <section class="hero">
