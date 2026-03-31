@@ -20,7 +20,7 @@ header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.97);backdr
 .pill-nav{background:#eef4fb;border-radius:50px;padding:6px 6px 6px 20px;display:flex;align-items:center;gap:2px;}
 .pill-nav a.pill-link{font-size:12px;font-weight:700;color:var(--blue);padding:7px 14px;border-radius:40px;white-space:nowrap;transition:background .2s;}
 .pill-nav a.pill-link:hover{background:rgba(37,99,168,.1);}
-.pill-nav a.pill-contact{display:flex;align-items:center;gap:6px;background:var(--navy);color:#fff;font-size:12px;font-weight:700;padding:9px 20px;border-radius:40px;white-space:nowrap;}
+.pill-nav a.pill-contact{display:flex;align-items:center;gap:6px;background:rgba(15,31,61,.6);color:#fff;font-size:12px;font-weight:700;padding:9px 20px;border-radius:40px;white-space:nowrap;}
 .hd-cta{background:var(--orange);color:#fff;font-size:11px;font-weight:700;padding:10px 18px;border-radius:40px;white-space:nowrap;flex-shrink:0;}
 .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;background:none;border:none;}
 .hamburger span{display:block;width:22px;height:2px;background:#333;border-radius:2px;transition:all .3s;}
@@ -96,7 +96,7 @@ header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.97);backdr
 .flow{padding:80px 24px;background:#fff;}
 .flow-inner{max-width:1000px;margin:0 auto;}
 .flow-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:48px;position:relative;}
-.flow-grid::before{content:'';position:absolute;top:32px;left:10%;right:10%;height:2px;background:linear-gradient(90deg,var(--blue-light),var(--blue));z-index:0;}
+
 .flow-step{display:flex;flex-direction:column;align-items:center;text-align:center;position:relative;z-index:1;}
 .flow-circle{width:64px;height:64px;border-radius:50%;background:#fff;border:3px solid var(--blue);display:flex;align-items:center;justify-content:center;margin-bottom:16px;box-shadow:0 4px 16px rgba(37,99,168,.15);}
 .flow-circle span{font-family:'Montserrat',sans-serif;font-size:18px;font-weight:900;color:var(--blue);}
@@ -106,7 +106,7 @@ header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.97);backdr
 /* CTA BAND */
 .cta-band{text-align:center;padding:16px 24px;background:var(--gray);}
 .cta-band a{display:inline-block;background:var(--orange);color:#fff;font-size:15px;font-weight:900;padding:16px 56px;border-radius:50px;box-shadow:0 6px 20px rgba(245,158,11,.35);}
-.flow-grid::before{content:'';position:absolute;top:32px;left:10%;right:10%;height:2px;background:linear-gradient(90deg,var(--blue),var(--navy));z-index:0;}
+
 
 /* FAQ */
 .faq{padding:80px 24px;background:var(--gray);}
@@ -155,8 +155,9 @@ footer small{font-size:10px;color:#bbb;}
   .hero-inner{grid-template-columns:1fr;}
   .hero-photos{display:none;}
   .benefit-row,.benefit-row.rev{grid-template-columns:1fr;direction:ltr;}
-  .flow-grid{grid-template-columns:1fr 1fr;gap:32px;}
-  .flow-grid::before{display:none;}
+  .flow-grid{grid-template-columns:repeat(3,1fr);gap:32px;}
+  .flow-grid::before,.flow-grid::after,.flow-step::before,.flow-step::after{content:none!important;display:none!important;border:none!important;background:none!important;}
+.flow-grid{border:none!important;background:none!important;border-top:none!important;}
   .fn-grid{grid-template-columns:1fr 1fr;}
 }
 </style>
@@ -216,11 +217,10 @@ footer small{font-size:10px;color:#bbb;}
     <div class="sec-label">PAIN POINT</div>
     <h2>こんなお悩みありませんか？</h2>
     <div class="pain-tags" style="margin-top:36px;">
-      <span class="pain-tag">なんとなく不安だけど、何が嫌なのかもわからない</span>
-      <span class="pain-tag">やりたいことを聞かれるのが、一番つらい</span>
-      <span class="pain-tag">転職サイトに登録する気力も、正直ない</span>
-      <span class="pain-tag">今の会社を辞めるべきか判断できない</span>
-      <span class="pain-tag">職歴や学歴に自信がなく、転職できる気がしない</span>
+      <span class="pain-tag">今のままでは給料が上がらない</span>
+      <span class="pain-tag">転職したいけど実績がない</span>
+      <span class="pain-tag">キャリアについて相談できる人がいない</span>
+
     </div>
   </div>
 </section>
@@ -295,7 +295,7 @@ footer small{font-size:10px;color:#bbb;}
           </svg>
         </div>
         <h4>無料相談申込</h4>
-        <p>こちらより、1分でできる無料相談申込を行なってください。</p>
+        <p><a href="#cta" style="color:var(--blue);text-decoration:underline;">こちら</a>より、1分でできる無料相談<br>申込を行なってください。</p>
       </div>
       <div class="flow-step">
         <div class="flow-num">02</div>
@@ -309,7 +309,7 @@ footer small{font-size:10px;color:#bbb;}
           </svg>
         </div>
         <h4>キャリアカウンセリング</h4>
-        <p>転職において希望する条件や、不安なことなど、なんでも相談してください。</p>
+        <p>転職の希望条件や不安なことなど、<br>なんでも相談してください。</p>
       </div>
       <div class="flow-step">
         <div class="flow-num">03</div>
@@ -322,7 +322,7 @@ footer small{font-size:10px;color:#bbb;}
           </svg>
         </div>
         <h4>求人紹介</h4>
-        <p>専任アドバイザーが責任を持って、あなたにとって最適な求人を紹介します。</p>
+        <p>専任アドバイザーが責任を持って、<br>最適な求人を紹介します。</p>
       </div>
       <div class="flow-step">
         <div class="flow-num">04</div>
@@ -336,7 +336,7 @@ footer small{font-size:10px;color:#bbb;}
           </svg>
         </div>
         <h4>書類・面接</h4>
-        <p>現役の企業人事の目線で、書類の添削から企業に合わせた面接対策までしっかりサポートします。</p>
+        <p>書類の添削から面接対策まで、<br>しっかりサポートします。</p>
       </div>
       <div class="flow-step">
         <div class="flow-num">05</div>
@@ -350,7 +350,7 @@ footer small{font-size:10px;color:#bbb;}
           </svg>
         </div>
         <h4>内定・入社</h4>
-        <p>年収の交渉や入社日の調整など、ご自身では調整しづらい点も代行します。</p>
+        <p>年収交渉や入社日の調整など、<br>代行します。</p>
       </div>
       <div class="flow-step">
         <div class="flow-num">06</div>
@@ -364,7 +364,7 @@ footer small{font-size:10px;color:#bbb;}
           </svg>
         </div>
         <h4>入社後フォロー</h4>
-        <p>入社後の不安や困りごとなどなんでもスタッフに相談ください。</p>
+        <p>入社後の不安や困りごとなど、<br>なんでもご相談ください。</p>
       </div>
     </div>
   </div>
@@ -416,7 +416,7 @@ footer small{font-size:10px;color:#bbb;}
   <h2>本気の転職、始めよう。</h2>
   <p>まずはLINEで、無料相談。<br>登録はたった30秒、履歴書も不要です。</p>
   <a href="#" class="line-btn">無料相談申込</a>
-  <div class="cta-note">※ 無料・強制なし・いつでも退会可能</div>
+
 </section>
 
 
