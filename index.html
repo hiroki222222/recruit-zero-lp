@@ -112,11 +112,13 @@ header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.97);backdr
 .faq{padding:80px 24px;background:var(--gray);}
 .faq-inner{max-width:720px;margin:0 auto;}
 .faq-list{margin-top:48px;display:flex;flex-direction:column;gap:10px;}
-.faq-item{border-radius:12px;overflow:hidden;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.04);}
-.faq-q{width:100%;display:flex;justify-content:space-between;align-items:center;padding:20px 24px;background:#fff;border:none;cursor:pointer;text-align:left;font-size:14px;font-weight:700;color:var(--navy);gap:12px;}
-.faq-q .fq-icon{width:26px;height:26px;border-radius:50%;background:var(--blue-pale);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px;color:var(--blue);font-weight:900;transition:transform .3s;line-height:1;}
+.faq-item{border-radius:0;overflow:hidden;background:transparent;box-shadow:none;border-bottom:1px solid #dde6f0;}
+.faq-q{width:100%;display:flex;align-items:center;padding:22px 8px;background:transparent;border:none;cursor:pointer;text-align:left;font-size:15px;font-weight:700;color:var(--navy);gap:14px;}
+.faq-q-badge{width:32px;height:32px;border-radius:50%;background:var(--blue);color:#fff;font-size:13px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.faq-q-text{flex:1;}
+.fq-icon{font-size:20px;color:var(--blue);font-weight:400;flex-shrink:0;transition:transform .3s;line-height:1;}
 .faq-q.open .fq-icon{transform:rotate(45deg);}
-.faq-a{display:none;padding:0 24px 20px;font-size:13px;color:#666;line-height:1.9;}
+.faq-a{display:none;padding:0 8px 20px 54px;font-size:13px;color:#666;line-height:1.9;}
 .faq-a.open{display:block;}
 
 /* CTA FINAL */
@@ -214,7 +216,6 @@ footer small{font-size:10px;color:#bbb;}
 <!-- PAIN -->
 <section class="pain">
   <div class="pain-inner">
-    <div class="sec-label">PAIN POINT</div>
     <h2>こんなお悩みありませんか？</h2>
     <div class="pain-tags" style="margin-top:36px;">
       <span class="pain-tag">今のままでは給料が上がらない</span>
@@ -273,25 +274,27 @@ footer small{font-size:10px;color:#bbb;}
 
 <!-- CTA BAND -->
 <div class="cta-band" style="padding:40px 24px;">
-  <a href="#cta">無料相談をする</a>
+          <a href="#cta">無料相談申込</a>
 </div>
 
 <!-- FLOW -->
 <section class="flow" id="steps">
   <div class="flow-inner">
     <div class="sec-head">
-      <div class="en">HOW IT WORKS</div>
       <h2 style="margin-top:8px;">ご利用の流れ</h2>
     </div>
     <div class="flow-grid">
       <div class="flow-step">
         <div class="flow-num">01</div>
         <div class="flow-circle">
-          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="#4a90d9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="10" y="6" width="22" height="28" rx="2"/>
-            <line x1="15" y1="13" x2="27" y2="13"/><line x1="15" y1="18" x2="27" y2="18"/><line x1="15" y1="23" x2="22" y2="23"/>
-            <circle cx="34" cy="34" r="8" fill="white"/>
-            <line x1="31" y1="34" x2="37" y2="34"/><line x1="34" y1="31" x2="34" y2="37"/>
+          <svg width="42" height="42" viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="10" y="5" width="28" height="35" rx="3" stroke="#1a1a2e" stroke-width="1.8" fill="white"/>
+            <line x1="16" y1="14" x2="32" y2="14" stroke="#1a1a2e" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="16" y1="20" x2="32" y2="20" stroke="#1a1a2e" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="16" y1="26" x2="26" y2="26" stroke="#1a1a2e" stroke-width="1.5" stroke-linecap="round"/>
+            <rect x="28" y="30" width="14" height="18" rx="2" transform="rotate(-35 28 30)" fill="#cce4f7" stroke="#1a1a2e" stroke-width="1.5"/>
+            <rect x="30" y="33" width="10" height="13" rx="1" transform="rotate(-35 30 33)" fill="#2563a8"/>
+            <polygon points="24,44 22,49 27,47" fill="#1a1a2e"/>
           </svg>
         </div>
         <h4>無料相談申込</h4>
@@ -300,12 +303,19 @@ footer small{font-size:10px;color:#bbb;}
       <div class="flow-step">
         <div class="flow-num">02</div>
         <div class="flow-circle">
-          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="#4a90d9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="6" y="14" width="26" height="18" rx="2"/>
-            <line x1="19" y1="32" x2="19" y2="38"/><line x1="13" y1="38" x2="25" y2="38"/>
-            <circle cx="34" cy="14" r="6" fill="white" stroke="#4a90d9" stroke-width="2"/>
-            <line x1="34" y1="10" x2="34" y2="14"/><circle cx="34" cy="15.5" r="1" fill="#4a90d9"/>
-            <path d="M29 24 Q34 20 39 24"/>
+          <svg width="42" height="42" viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="6" y="18" width="34" height="22" rx="3" stroke="#1a1a2e" stroke-width="1.8" fill="white"/>
+            <line x1="23" y1="40" x2="23" y2="46" stroke="#1a1a2e" stroke-width="1.8"/>
+            <line x1="16" y1="46" x2="30" y2="46" stroke="#1a1a2e" stroke-width="1.8" stroke-linecap="round"/>
+            <circle cx="37" cy="16" r="6" fill="none" stroke="#1a1a2e" stroke-width="1.5"/>
+            <circle cx="37" cy="13.5" r="2.5" fill="#e8c44a"/>
+            <path d="M32 22 Q37 19 42 22" stroke="#1a1a2e" stroke-width="1.5" fill="#2563a8"/>
+            <rect x="39" y="7" width="12" height="8" rx="2" fill="white" stroke="#1a1a2e" stroke-width="1.5"/>
+            <line x1="42" y1="10" x2="48" y2="10" stroke="#1a1a2e" stroke-width="1.2"/>
+            <line x1="42" y1="12" x2="48" y2="12" stroke="#1a1a2e" stroke-width="1.2"/>
+            <polygon points="41,15 39,18 44,17" fill="#1a1a2e"/>
+            <rect x="9" y="24" width="20" height="3" rx="1" fill="#2563a8" opacity="0.15"/>
+            <rect x="9" y="30" width="15" height="3" rx="1" fill="#2563a8" opacity="0.15"/>
           </svg>
         </div>
         <h4>キャリアカウンセリング</h4>
@@ -314,11 +324,15 @@ footer small{font-size:10px;color:#bbb;}
       <div class="flow-step">
         <div class="flow-num">03</div>
         <div class="flow-circle">
-          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="#4a90d9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="8" y="18" width="20" height="22" rx="1"/>
-            <rect x="12" y="12" width="20" height="22" rx="1" fill="white"/>
-            <rect x="16" y="6" width="20" height="22" rx="1" fill="white"/>
-            <line x1="21" y1="13" x2="31" y2="13"/><line x1="21" y1="17" x2="31" y2="17"/><line x1="21" y1="21" x2="28" y2="21"/>
+          <svg width="42" height="42" viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="6" y="22" width="24" height="28" rx="2" fill="white" stroke="#1a1a2e" stroke-width="1.8"/>
+            <rect x="12" y="16" width="24" height="28" rx="2" fill="white" stroke="#1a1a2e" stroke-width="1.8"/>
+            <rect x="18" y="10" width="24" height="28" rx="2" fill="white" stroke="#1a1a2e" stroke-width="1.8"/>
+            <rect x="20" y="13" width="8" height="6" rx="1" fill="#2563a8"/>
+            <rect x="30" y="14" width="8" height="2" rx="1" fill="#cce4f7"/>
+            <line x1="20" y1="23" x2="38" y2="23" stroke="#1a1a2e" stroke-width="1.2" opacity="0.4"/>
+            <line x1="20" y1="27" x2="38" y2="27" stroke="#1a1a2e" stroke-width="1.2" opacity="0.4"/>
+            <line x1="20" y1="31" x2="32" y2="31" stroke="#1a1a2e" stroke-width="1.2" opacity="0.4"/>
           </svg>
         </div>
         <h4>求人紹介</h4>
@@ -327,12 +341,18 @@ footer small{font-size:10px;color:#bbb;}
       <div class="flow-step">
         <div class="flow-num">04</div>
         <div class="flow-circle">
-          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="#4a90d9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="16" cy="12" r="5"/><circle cx="32" cy="12" r="5"/>
-            <path d="M8 38 C8 28 24 28 24 38"/>
-            <path d="M24 38 C24 28 40 28 40 38"/>
-            <line x1="16" y1="28" x2="16" y2="38"/><line x1="32" y1="28" x2="32" y2="38"/>
-            <rect x="12" y="30" width="8" height="6" rx="1"/><rect x="28" y="30" width="8" height="6" rx="1"/>
+          <svg width="42" height="42" viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="16" cy="12" r="5" fill="#cce4f7" stroke="#1a1a2e" stroke-width="1.5"/>
+            <circle cx="38" cy="12" r="5" fill="#2563a8" stroke="#1a1a2e" stroke-width="1.5"/>
+            <line x1="8" y1="38" x2="8" y2="28" stroke="#1a1a2e" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="24" y1="38" x2="24" y2="28" stroke="#1a1a2e" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="8" y1="38" x2="24" y2="38" stroke="#1a1a2e" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M8 28 Q16 22 24 28" stroke="#1a1a2e" stroke-width="1.5" fill="none"/>
+            <line x1="30" y1="38" x2="30" y2="28" stroke="#1a1a2e" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="46" y1="38" x2="46" y2="28" stroke="#1a1a2e" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="30" y1="38" x2="46" y2="38" stroke="#1a1a2e" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M30 28 Q38 22 46 28" stroke="#1a1a2e" stroke-width="1.5" fill="none"/>
+            <rect x="20" y="26" width="14" height="10" rx="1" fill="white" stroke="#1a1a2e" stroke-width="1.5"/>
           </svg>
         </div>
         <h4>書類・面接</h4>
@@ -341,12 +361,14 @@ footer small{font-size:10px;color:#bbb;}
       <div class="flow-step">
         <div class="flow-num">05</div>
         <div class="flow-circle">
-          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="#4a90d9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M14 24 L14 38 L10 38 L10 24 Z"/>
-            <path d="M14 26 Q18 20 22 20 L32 20 Q36 20 36 24 Q36 26 34 26 L28 26"/>
-            <path d="M34 26 Q38 26 38 30 Q38 34 34 34 L22 34 Q18 34 14 32"/>
-            <line x1="22" y1="26" x2="22" y2="34"/>
-            <path d="M26 14 L27.5 17 L31 17.5 L28.5 20 L29 23.5 L26 22 L23 23.5 L23.5 20 L21 17.5 L24.5 17 Z" fill="#4a90d9" stroke="none"/>
+          <svg width="42" height="42" viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M22 38 L22 26 L28 20 L30 22 L26 28 L34 28 C36 28 37 29 37 31 C37 33 36 34 34 34 L30 34 C32 34 33 35 33 37 C33 39 32 40 30 40 L24 40 C23 40 22 39 22 38Z" fill="#cce4f7" stroke="#1a1a2e" stroke-width="1.5" stroke-linejoin="round"/>
+            <rect x="14" y="26" width="8" height="16" rx="2" fill="#2563a8" stroke="#1a1a2e" stroke-width="1.5"/>
+            <line x1="27" y1="10" x2="27" y2="6" stroke="#1a1a2e" stroke-width="1.8" stroke-linecap="round"/>
+            <line x1="34" y1="13" x2="37" y2="10" stroke="#1a1a2e" stroke-width="1.8" stroke-linecap="round"/>
+            <line x1="37" y1="20" x2="41" y2="20" stroke="#1a1a2e" stroke-width="1.8" stroke-linecap="round"/>
+            <line x1="20" y1="13" x2="17" y2="10" stroke="#1a1a2e" stroke-width="1.8" stroke-linecap="round"/>
+            <line x1="17" y1="20" x2="13" y2="20" stroke="#1a1a2e" stroke-width="1.8" stroke-linecap="round"/>
           </svg>
         </div>
         <h4>内定・入社</h4>
@@ -355,12 +377,10 @@ footer small{font-size:10px;color:#bbb;}
       <div class="flow-step">
         <div class="flow-num">06</div>
         <div class="flow-circle">
-          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="#4a90d9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="24" cy="18" r="7"/>
-            <path d="M10 42 C10 32 38 32 38 42"/>
-            <polygon points="24,6 25.5,11 30,11 26.5,14 28,19 24,16 20,19 21.5,14 18,11 22.5,11" fill="none" stroke="#4a90d9" stroke-width="1.5"/>
-            <line x1="30" y1="8" x2="34" y2="5"/><line x1="32" y1="12" x2="37" y2="11"/>
-            <line x1="18" y1="8" x2="14" y2="5"/><line x1="16" y1="12" x2="11" y2="11"/>
+          <svg width="54" height="54" viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="27" cy="18" r="8" fill="white" stroke="#1a1a2e" stroke-width="1.5"/>
+            <path d="M27 14 Q34 14 35 20" fill="#e8c44a" stroke="none"/>
+            <path d="M15 44 C15 33 39 33 39 44" stroke="#1a1a2e" stroke-width="1.5" fill="none"/>
           </svg>
         </div>
         <h4>入社後フォロー</h4>
@@ -379,33 +399,24 @@ footer small{font-size:10px;color:#bbb;}
 <section class="faq" id="faq">
   <div class="faq-inner">
     <div class="sec-head">
-      <div class="en">FAQ</div>
       <h2 style="margin-top:8px;">よくある質問</h2>
     </div>
     <div class="faq-list">
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">サービスは完全無料ですか？<span class="fq-icon">+</span></button>
+        <button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-badge">Q</span><span class="faq-q-text">サービスの利用は完全無料ですか？</span><span class="fq-icon">+</span></button>
         <div class="faq-a">はい、完全無料です。相談から内定・入社後フォローまで、費用は一切かかりません。</div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">転職意思がなくても相談できますか？<span class="fq-icon">+</span></button>
+        <button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-badge">Q</span><span class="faq-q-text">年齢や職種など利用にあたって制限はありますか？</span><span class="fq-icon">+</span></button>
+        <div class="faq-a">基本的に制限はありません。第二新卒・社会人1〜3年目の方を中心に、幅広い方のご支援をしています。</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-badge">Q</span><span class="faq-q-text">転職するか決まっていないのですが相談してもいいですか？</span><span class="fq-icon">+</span></button>
         <div class="faq-a">もちろんです。「転職すべきかどうか」の判断から一緒に考えます。相談したからといって転職を強制することは一切ありません。</div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">転職するつもりはないのですが、相談だけしてもいいですか？<span class="fq-icon">+</span></button>
-        <div class="faq-a">大歓迎です。まずは現状のお悩みをお気軽にLINEでご相談ください。</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">どのようにやりとりしますか？<span class="fq-icon">+</span></button>
-        <div class="faq-a">基本的にLINEチャットでのやりとりです。あなたのペースで進めることができます。必要に応じてオンライン面談も対応しています。</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">内定まで何社くらい受けますか？<span class="fq-icon">+</span></button>
-        <div class="faq-a">量より質を重視しています。あなたに合った企業のみをご紹介するため、平均応募数は少なめでも高い内定率を実現しています。</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">職歴が少ないのですが大丈夫ですか？<span class="fq-icon">+</span></button>
-        <div class="faq-a">第二新卒・社会人1〜3年目の方のご支援を専門としています。職歴より「これから何がしたいか」を一緒に整理することから始めますのでご安心ください。</div>
+        <button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-badge">Q</span><span class="faq-q-text">どのような企業を紹介してもらえますか？</span><span class="fq-icon">+</span></button>
+        <div class="faq-a">あなたの強みや希望をもとに、マッチする企業のみをご紹介します。量より質を重視した厳選提案です。</div>
       </div>
     </div>
   </div>
