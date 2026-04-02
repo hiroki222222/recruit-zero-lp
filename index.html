@@ -144,8 +144,43 @@ footer{padding:40px 24px 32px;background:#fef0e7;text-align:center;}
 .footer-info{font-size:11px;color:#888;line-height:2.2;margin-bottom:16px;}
 footer small{font-size:10px;color:#bbb;}
 
-/* FLOAT */
-.line-float{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:99;background:var(--line);color:#fff;font-size:14px;font-weight:700;padding:14px 40px;border-radius:50px;box-shadow:0 8px 24px rgba(40,192,0,.5);white-space:nowrap;}
+/* FOOTER */
+footer{padding:40px 24px 32px;background:#fef0e7;text-align:center;}
+.footer-by{font-size:9px;color:#aaa;letter-spacing:.2em;margin-bottom:6px;}
+.footer-logo{font-family:'Montserrat',sans-serif;font-weight:900;font-size:24px;color:var(--orange-main);letter-spacing:-1px;margin-bottom:14px;}
+.footer-info{font-size:11px;color:#888;line-height:2.2;margin-bottom:16px;}
+footer small{font-size:10px;color:#bbb;}
+
+/* --- LINE相談ボタン：スマホ版のみ表示 --- */
+@media (max-width: 768px) {
+  .line-float {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    z-index: 100000; /* 他の要素より絶対手前に出す */
+    background: #28C000 !important; /* 変数を使わず直接LINE緑を指定 */
+    color: #fff !important;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 16px 0;
+    border-radius: 50px;
+    box-shadow: 0 8px 25px rgba(40, 192, 0, 0.4);
+    display: flex !important; /* スマホで強制表示 */
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+}
+
+/* PC版（769px以上）では完全に消す設定 */
+@media (min-width: 769px) {
+  .line-float {
+    display: none !important;
+  }
+}
 
 /* SECTION COMMON */
 .sec-head{text-align:center;margin-bottom:0;}
@@ -205,7 +240,8 @@ footer small{font-size:10px;color:#bbb;}
 <section class="hero">
   <div class="hero-inner">
     <div>
-     <h1>あなたのキャリアに光を、<br><em>ルミナスキャリア。</em></h1>
+      <p class="hero-eyebrow">ルミナスキャリア</p>
+      <h1><em>人生を逆転させる転職を、</em><br>ルミナスキャリア。</h1>
       <a href="#cta" class="hero-btn">無料キャリア相談</a>
     </div>
 
